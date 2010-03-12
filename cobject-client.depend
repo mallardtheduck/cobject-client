@@ -1,0 +1,118 @@
+# depslib dependency file v1.0
+1268146126 source:/home/mallard/Projects/cobject-client/main.cpp
+	<iostream>
+	<string>
+	<boost/asio.hpp>
+	<meta.hpp>
+
+1267368581 /home/mallard/Projects/meta/meta.hpp
+	"metaclass.hpp"
+	"metaobject.hpp"
+	"iface.hpp"
+	"new.hpp"
+	"stdfnwrap.hpp"
+	"dbgfnwrap.hpp"
+	"comp_util.hpp"
+
+1267834187 /home/mallard/Projects/meta/metaclass.hpp
+	<string>
+	<vector>
+	<map>
+	<typeinfo>
+	<boost/tuple/tuple.hpp>
+	"util.hpp"
+	"polywrapper.hpp"
+	"fnwrap.hpp"
+	"metacontext.hpp"
+	"caller.hpp"
+
+1267368687 /home/mallard/Projects/meta/util.hpp
+	<typeinfo>
+	<boost/foreach.hpp>
+	"comp_util.hpp"
+	"polywrapper.hpp"
+
+1267368534 /home/mallard/Projects/meta/comp_util.hpp
+	<string>
+	<cxxabi.h>
+
+1267874968 /home/mallard/Projects/meta/polywrapper.hpp
+
+1267368564 /home/mallard/Projects/meta/fnwrap.hpp
+	<iostream>
+	<typeinfo>
+	<boost/any.hpp>
+	<boost/tuple/tuple_io.hpp>
+	"util.hpp"
+	"polywrapper.hpp"
+	"metacontext.hpp"
+	"tuple_util.hpp"
+
+1267369927 /home/mallard/Projects/meta/metacontext.hpp
+	<string>
+	<map>
+	<boost/any.hpp>
+	"metastate.hpp"
+	"metaclass.hpp"
+	"tuple_util.hpp"
+
+1267368603 /home/mallard/Projects/meta/metastate.hpp
+	<map>
+	<boost/any.hpp>
+
+1267368640 /home/mallard/Projects/meta/tuple_util.hpp
+	<boost/any.hpp>
+	<boost/tuple/tuple.hpp>
+	<boost/tuple/tuple_io.hpp>
+	<vector>
+	"comp_util.hpp"
+	"util.hpp"
+
+1267368529 /home/mallard/Projects/meta/caller.hpp
+	<string>
+	"util.hpp"
+	"metacontext.hpp"
+	"metaclass.hpp"
+	"tuple_util.hpp"
+	"exceptions.hpp"
+
+1267368560 /home/mallard/Projects/meta/exceptions.hpp
+	<stdexcept>
+
+1267834295 /home/mallard/Projects/meta/metaobject.hpp
+	<iostream>
+	<string>
+	<stdexcept>
+	<map>
+	<boost/smart_ptr.hpp>
+	<boost/any.hpp>
+	"metaclass.hpp"
+	"metacontext.hpp"
+	"tuple_util.hpp"
+	"caller.hpp"
+
+1267368569 /home/mallard/Projects/meta/iface.hpp
+	<string>
+	<vector>
+	"metaclass.hpp"
+	"caller.hpp"
+	"polywrapper.hpp"
+	"util.hpp"
+
+1267368608 /home/mallard/Projects/meta/new.hpp
+	"metaclass.hpp"
+	"metaobject.hpp"
+
+1267368623 /home/mallard/Projects/meta/stdfnwrap.hpp
+	"polywrapper.hpp"
+	"fnwrap.hpp"
+	"tuple_util.hpp"
+
+1267368541 /home/mallard/Projects/meta/dbgfnwrap.hpp
+	<typeinfo>
+	<iostream>
+	<vector>
+	"comp_util.hpp"
+	"util.hpp"
+	"fnwrap.hpp"
+
