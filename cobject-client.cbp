@@ -40,6 +40,8 @@
 			<Add library="pthread" />
 		</Linker>
 		<Unit filename="main.cpp" />
+		<Unit filename="serialize.cpp" />
+		<Unit filename="serialize.hpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

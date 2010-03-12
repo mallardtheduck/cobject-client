@@ -1,7 +1,10 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <boost/asio.hpp>
 #include <meta.hpp>
+
+#include "serialize.hpp"
 
 using namespace std;
 using namespace boost;
@@ -12,44 +15,14 @@ int main()
 {
     try
     {
+        tcp::iostream s("localhost", "3300");
 
-        boost::asio::io_service io_service;
+        string msg;
+        Deserialize(s, msg);
+        cout << msg << endl;
 
-        tcp::resolver resolver(io_service);
-        tcp::resolver::query query("127.0.0.1", "3300");
-        tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
-        tcp::resolver::iterator end;
-
-        tcp::socket socket(io_service);
-        boost::system::error_code error = boost::asio::error::host_not_found;
-        while (error && endpoint_iterator != end)
-        {
-            socket.close();
-            socket.connect(*endpoint_iterator++, error);
-        }
-        if (error)
-            throw boost::system::system_error(error);
-
-        //for(;;)
-        {
-            boost::array<char, 128> buf;
-            boost::system::error_code error;
-
-            size_t len = socket.read_some(boost::asio::buffer(buf), error);
-
-
-            /*if (error == boost::asio::error::eof)
-                break; // Connection closed cleanly by peer.
-            else if (error)
-                throw boost::system::system_error(error); // Some other error.*/
-
-            std::cout.write(buf.data(), len);
-        }
         for (char c='A';;c=(c=='Z'?'A':c+1)){
-            array<char, 1> buf;
-            boost::system::error_code error;
-            buf[0]=c;
-            socket.write_some(buffer(buf), error);
+            s << c;
         }
     }
     catch (std::exception& e)

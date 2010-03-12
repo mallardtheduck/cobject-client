@@ -37,6 +37,7 @@
 			<Add library="../meta/bin/DebugLib/libmeta.a" />
 			<Add library="boost_system" />
 			<Add library="boost_filesystem" />
+			<Add library="pthread" />
 		</Linker>
 		<Unit filename="main.cpp" />
 		<Extensions>
