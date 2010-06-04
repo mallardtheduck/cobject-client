@@ -1,0 +1,15 @@
+#ifndef MEMSTREAM_HPP_INCLUDED
+#define MEMSTREAM_HPP_INCLUDED
+
+#include <iostream>
+#include <boost/iostreams/categories.hpp>
+#include <boost/iostreams/stream.hpp>
+#include <boost/asio.hpp>
+
+using namespace std;
+using namespace boost;
+using namespace boost::asio;
+using namespace boost::asio::ip;
+using namespace boost::iostreams;
+
+#endif // MEMSTREAM_HPP_INCLUDED

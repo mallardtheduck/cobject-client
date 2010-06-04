@@ -31,17 +31,35 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add option="-DCO_CLIENT" />
 			<Add directory="../meta" />
+			<Add directory="../cobject-shared" />
 		</Compiler>
 		<Linker>
 			<Add library="../meta/bin/DebugLib/libmeta.a" />
 			<Add library="boost_system" />
 			<Add library="boost_filesystem" />
 			<Add library="pthread" />
+			<Add library="boost_thread" />
 		</Linker>
+		<Unit filename="connection.cpp" />
+		<Unit filename="connection.hpp" />
+		<Unit filename="foreach.hpp" />
+		<Unit filename="future.hpp" />
+		<Unit filename="handlemessage.cpp" />
+		<Unit filename="handlemessage.hpp" />
 		<Unit filename="main.cpp" />
-		<Unit filename="serialize.cpp" />
-		<Unit filename="serialize.hpp" />
+		<Unit filename="memstream.cpp" />
+		<Unit filename="memstream.hpp" />
+		<Unit filename="metaext.cpp" />
+		<Unit filename="metaext.hpp" />
+		<Unit filename="testclass.cpp" />
+		<Unit filename="testclass.hpp" />
+		<Unit filename="../cobject-shared/messages.hpp" />
+		<Unit filename="../cobject-shared/serialize.cpp" />
+		<Unit filename="../cobject-shared/serialize.hpp" />
+		<Unit filename="../cobject-shared/typemap.cpp" />
+		<Unit filename="../cobject-shared/typemap.hpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

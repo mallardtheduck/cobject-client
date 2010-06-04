@@ -1,0 +1,24 @@
+#ifndef FUTURE_HPP_INCLUDED
+#define FUTURE_HPP_INCLUDED
+
+#include <boost/thread.hpp>
+
+template<typename T> class Future{
+    private:
+        T _result;
+        barrier _bar;
+        bool _avail;
+        mutex _mut;
+    public:
+        Future() : _bar(2), _avail(false);
+        T& Get(){
+            _mut.lock();
+            if(!_avail)_bar.wait();
+            _mut.unlock();
+            return _result;
+        }
+
+        void Set(T value);
+}
+
+#endif // FUTURE_HPP_INCLUDED

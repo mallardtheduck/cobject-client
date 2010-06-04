@@ -1,0 +1,9 @@
+#include <meta.hpp>
+
+#include <string>
+
+using namespace std;
+
+META_METHOD(hello, string, NO_PARAMS){
+    return "Hello world!";
+}
