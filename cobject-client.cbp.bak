@@ -45,6 +45,7 @@
 		<Unit filename="connection.cpp" />
 		<Unit filename="connection.hpp" />
 		<Unit filename="foreach.hpp" />
+		<Unit filename="future.hpp" />
 		<Unit filename="handlemessage.cpp" />
 		<Unit filename="handlemessage.hpp" />
 		<Unit filename="main.cpp" />

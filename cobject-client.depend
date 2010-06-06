@@ -85,7 +85,7 @@
 1272542246 /home/mallard/Projects/meta/exceptions.hpp
 	<stdexcept>
 
-1275569146 /home/mallard/Projects/meta/metaobject.hpp
+1275841318 /home/mallard/Projects/meta/metaobject.hpp
 	<iostream>
 	<string>
 	<stdexcept>
@@ -105,7 +105,7 @@
 	"polywrapper.hpp"
 	"util.hpp"
 
-1267368608 /home/mallard/Projects/meta/new.hpp
+1275841085 /home/mallard/Projects/meta/new.hpp
 	"metaclass.hpp"
 	"metaobject.hpp"
 
@@ -152,17 +152,18 @@
 	<string>
 	<vector>
 
-1275476285 /home/mallard/Projects/cobject-shared/serialize.hpp
+1275845840 /home/mallard/Projects/cobject-shared/serialize.hpp
 	<iostream>
 	<vector>
 	<boost/cstdint.hpp>
 	<boost/any.hpp>
 	"messages.hpp"
 
-1275242736 source:/home/mallard/Projects/cobject-shared/serialize.cpp
+1275845556 source:/home/mallard/Projects/cobject-shared/serialize.cpp
 	"serialize.hpp"
+	<stdexcept>
 
-1275660593 source:/home/mallard/Projects/cobject-client/metaext.cpp
+1275838839 source:/home/mallard/Projects/cobject-client/metaext.cpp
 	"metaext.hpp"
 	"serialize.hpp"
 	<stdexcept>
@@ -178,7 +179,7 @@
 	"messages.hpp"
 	<typeinfo>
 
-1271327955 source:/home/mallard/Projects/cobject-client/testclass.cpp
+1275842058 source:/home/mallard/Projects/cobject-client/testclass.cpp
 	"testclass.hpp"
 	<string>
 
@@ -192,12 +193,13 @@
 	<string>
 	<meta.hpp>
 
-1275660332 source:/home/mallard/Projects/cobject-client/connection.cpp
+1275840768 source:/home/mallard/Projects/cobject-client/connection.cpp
 	"connection.hpp"
 	<boost/bind.hpp>
 	<unistd.h>
 	"foreach.hpp"
 	"serialize.hpp"
+	"runcall.hpp"
 
 1274876237 source:/home/mallard/Projects/cobject-client/memstream.cpp
 	"memstream.hpp"
@@ -209,7 +211,7 @@
 	<boost/iostreams/stream.hpp>
 	<boost/asio.hpp>
 
-1275660089 /home/mallard/Projects/cobject-client/connection.hpp
+1275840733 /home/mallard/Projects/cobject-client/connection.hpp
 	<vector>
 	<string>
 	<queue>
@@ -228,4 +230,20 @@
 
 1274951695 /home/mallard/Projects/cobject-client/future.hpp
 	<boost/thread.hpp>
+
+1275845559 /home/mallard/Projects/cobject-client/runcall.hpp
+	"messages.hpp"
+	<meta.hpp>
+	<vector>
+	<boost/shared_ptr.hpp>
+	"connection.hpp"
+	"serialize.hpp"
+
+1275841580 source:/home/mallard/Projects/cobject-client/runcall.cpp
+	"runcall.hpp"
+	<boost/thread.hpp>
+	<boost/bind.hpp>
+	<boost/any.hpp>
+	"foreach.hpp"
+	"metaext.hpp"
 

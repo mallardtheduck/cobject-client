@@ -53,6 +53,8 @@
 		<Unit filename="memstream.hpp" />
 		<Unit filename="metaext.cpp" />
 		<Unit filename="metaext.hpp" />
+		<Unit filename="runcall.cpp" />
+		<Unit filename="runcall.hpp" />
 		<Unit filename="testclass.cpp" />
 		<Unit filename="testclass.hpp" />
 		<Unit filename="../cobject-shared/messages.hpp" />

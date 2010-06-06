@@ -7,7 +7,7 @@ using namespace meta;
 using namespace boost;
 
 META_METHOD(hello, string, NO_PARAMS){
-    return "Hello world!";
+    return string("Hello world!");
 }
 
 META_METHOD(saytimes, string, Q(tuple<string, int>)){

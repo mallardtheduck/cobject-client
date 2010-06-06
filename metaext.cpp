@@ -119,7 +119,7 @@ any COFnWrap::Call(MetaInfo &info, many args){
     else msgID=Messages::CallMethod;
     stringstream out;
     Serialize(out, msgID);
-    if(msgID==Messages::CallMethod || msgID==Messages::ConstructObject){
+    if(msgID==Messages::CallStatic || msgID==Messages::ConstructObject){
         Serialize(out, _conn._nsname);
         Serialize(out, _classname);
     }

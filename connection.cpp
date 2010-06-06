@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include "foreach.hpp"
 #include "serialize.hpp"
+#include "runcall.hpp"
 
 using namespace std;
 
@@ -66,6 +67,9 @@ void Connection::Reciever(){
             case Messages::GetClassDef:
                 Recv_GetClassDef(_s);
                 break;
+            case Messages::GetObjectDef:
+                Recv_GetObjectDef(_s);
+                break;
             case Messages::RegisterObject:
                 Recv_RegisterObject(_s);
                 break;
@@ -77,6 +81,22 @@ void Connection::Reciever(){
                 break;
             case Messages::CallMethod:
                 Recv_CallMethod(_s);
+                break;
+            case Messages::ReleaseObject:
+                Recv_ReleaseObject(_s);
+                break;
+            case Messages::Construct:
+                Recv_ReqConstruct(_s);
+                break;
+            case Messages::StaticCall:
+                Recv_ReqStaticCall(_s);
+                break;
+            case Messages::MethodCall:
+                Recv_ReqMethodCall(_s);
+                break;
+            case Messages::FreeObject:
+                Recv_FreeObject(_s);
+                break;
         }
     }
 }
@@ -297,13 +317,79 @@ void Connection::Recv_CallMethod(iostream &s){
     PutReply(replyhandle.str(), res);
 }
 
+void Connection::ReleaseObject(ObjectID_t oid){
+    stringstream out;
+    Serialize(out, Messages::ReleaseObject);
+    Serialize(out, oid);
+    stringstream replyhandle;
+    replyhandle << "ReleaseObject:" << oid;
+    SetupReply(replyhandle.str());
+    Send(out.str());
+    GetReply(replyhandle.str());
+}
+
+void Connection::Recv_ReleaseObject(iostream &s){
+    ObjectID_t oid;
+    Deserialize(s, oid);
+    StatusCode_t status;
+    Deserialize(s, status);
+    stringstream replyhandle;
+    replyhandle << "ReleaseObject:" << oid;
+    PutReply(replyhandle.str(), status);
+}
+
+void Connection::Recv_ReqConstruct(iostream &s){
+    string clsname;
+    Deserialize(s, clsname);
+    CallID_t cid;
+    Deserialize(s, cid);
+    vector<TypedVal> args;
+    Deserialize(s, args);
+    RunConstruct(*this, cid, _regclasses[clsname], args);
+}
+
+void Connection::Recv_ReqStaticCall(iostream &s){
+    string clsname, mthname;
+    Deserialize(s, clsname);
+    Deserialize(s, mthname);
+    CallID_t cid;
+    Deserialize(s, cid);
+    vector<TypedVal> args;
+    Deserialize(s, args);
+    RunStaticCall(*this, cid, _regclasses[clsname], mthname, args);
+}
+
+void Connection::Recv_ReqMethodCall(iostream &s){
+    ObjectID_t oid;
+    Deserialize(s, oid);
+    string mthname;
+    Deserialize(s, mthname);
+    CallID_t cid;
+    Deserialize(s, cid);
+    vector<TypedVal> args;
+    Deserialize(s, args);
+    RunMethodCall(*this, cid, _regobjects[oid], mthname, args);
+}
+
+void Connection::Recv_FreeObject(iostream &s){
+    ObjectID_t oid;
+    Deserialize(s, oid);
+    _regobjects.erase(oid);
+}
+
 bool Connection::TryGetObject(ObjectID_t oid, shared_ptr<ObjectHandle> &obj){
-    if(_ownedobjects.find(oid)!=_ownedobjects.end()){
-        obj=_ownedobjects[oid].lock();
+    if(_usedobjects.find(oid)!=_usedobjects.end()){
+        obj=_usedobjects[oid];
         return true;
     }else return false;
 }
 
 void Connection::AddObject(ObjectID_t oid, shared_ptr<ObjectHandle> obj){
-    _ownedobjects[oid]=obj;
+    _usedobjects[oid]=obj;
+}
+
+ObjectID_t Connection::AddOwnedObject(shared_ptr<MetaObject> obj){
+    ObjectID_t oid=++_objectid;
+    _regobjects[oid]=obj;
+    return oid;
 }

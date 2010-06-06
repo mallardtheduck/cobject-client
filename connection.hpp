@@ -41,18 +41,13 @@ private:
     map<string, ReplyPtr> _replymap;
     map<string, meta::MetaClass> _regclasses;
     map<ObjectID_t, shared_ptr<meta::MetaObject> > _regobjects;
-    map<ObjectID_t, weak_ptr<ObjectHandle> > _ownedobjects;
+    map<ObjectID_t, shared_ptr<ObjectHandle> > _usedobjects;
 
     thread _sendthread;
     thread _recvthread;
 
     void Sender();
     void Reciever();
-
-    void Send(const string &str);
-    ReplyPtr SetupReply(const string &nm);
-    void PutReply(const string &nm, any val);
-    any GetReply(const string &nm);
 
     void Recv_BrokerVersion(iostream &s);
     void Recv_ListNamespaces(iostream &s);
@@ -65,18 +60,23 @@ private:
     void Recv_ConstructObject(iostream &s);
     void Recv_CallStatic(iostream &s);
     void Recv_CallMethod(iostream &s);
+    void Recv_ReleaseObject(iostream &s);
 
     void Recv_ReqInfo(iostream &s);
     void Recv_ReqConstruct(iostream &s);
     void Recv_ReqStaticCall(iostream &s);
     void Recv_ReqMethodCall(iostream &s);
-
-    map<string, meta::MetaClass> Classes;
-    map<ObjectID_t, meta::MetaObject> Objects;
+    void Recv_FreeObject(iostream &s);
 
 public:
     Connection();
     ~Connection();
+
+    void Send(const string &str);
+    void SendNow(const string &str);
+    ReplyPtr SetupReply(const string &nm);
+    void PutReply(const string &nm, any val);
+    any GetReply(const string &nm);
 
     BrokerDetails GetBrokerDetails();
     string SetNamesapce(const string &ns);
@@ -84,11 +84,14 @@ public:
     vector<string> ListClasses(const string &ns);
     void RegisterClass(const meta::MetaClass &cls);
     meta::MetaObject RegisterObject(const meta::MetaObject &obj);
-    void ReleaseObject(const meta::MetaObject &obj);
     vector< ::MethodInfo> GetObjectDef(ObjectID_t oid);
     void ReleaseObject(ObjectID_t oid);
+
     bool TryGetObject(ObjectID_t oid, shared_ptr<ObjectHandle> &obj);
     void AddObject(ObjectID_t oid, shared_ptr<ObjectHandle> obj);
+
+    ObjectID_t AddOwnedObject(shared_ptr<meta::MetaObject> obj);
+    void RemoveOwnedObject(ObjectID_t oid);
 
     meta::MetaClass GetClass(const string &ns, const string &cls);
 };

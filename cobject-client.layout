@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="connection.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="5741" topLine="204" />
+	<File name="connection.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="9941" topLine="347" />
 	</File>
-	<File name="connection.hpp" open="1" top="0" tabpos="3">
-		<Cursor position="941" topLine="25" />
+	<File name="connection.hpp" open="1" top="0" tabpos="1">
+		<Cursor position="2597" topLine="83" />
 	</File>
 	<File name="future.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="459" topLine="11" />
@@ -16,7 +16,7 @@
 	<File name="handlemessage.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="590" topLine="0" />
 	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="4">
+	<File name="main.cpp" open="1" top="0" tabpos="4">
 		<Cursor position="1262" topLine="35" />
 	</File>
 	<File name="memstream.cpp" open="0" top="0" tabpos="0">
@@ -25,23 +25,29 @@
 	<File name="memstream.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="674" topLine="20" />
 	</File>
-	<File name="metaext.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="4485" topLine="120" />
+	<File name="metaext.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="2849" topLine="81" />
 	</File>
-	<File name="metaext.hpp" open="1" top="0" tabpos="4">
-		<Cursor position="628" topLine="10" />
+	<File name="metaext.hpp" open="0" top="0" tabpos="3">
+		<Cursor position="600" topLine="8" />
 	</File>
-	<File name="testclass.cpp" open="0" top="0" tabpos="6">
+	<File name="runcall.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="672" topLine="24" />
+	</File>
+	<File name="runcall.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="579" topLine="3" />
+	</File>
+	<File name="testclass.cpp" open="1" top="0" tabpos="6">
 		<Cursor position="430" topLine="1" />
 	</File>
-	<File name="../cobject-shared/messages.hpp" open="0" top="0" tabpos="8">
-		<Cursor position="1099" topLine="27" />
+	<File name="../cobject-shared/messages.hpp" open="1" top="0" tabpos="3">
+		<Cursor position="1099" topLine="51" />
 	</File>
-	<File name="../cobject-shared/serialize.cpp" open="0" top="0" tabpos="7">
+	<File name="../cobject-shared/serialize.cpp" open="1" top="1" tabpos="7">
 		<Cursor position="3854" topLine="55" />
 	</File>
-	<File name="../cobject-shared/serialize.hpp" open="1" top="0" tabpos="7">
-		<Cursor position="809" topLine="32" />
+	<File name="../cobject-shared/serialize.hpp" open="1" top="0" tabpos="5">
+		<Cursor position="226" topLine="15" />
 	</File>
 	<File name="../cobject-shared/typemap.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="1057" topLine="3" />
