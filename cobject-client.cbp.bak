@@ -46,13 +46,16 @@
 		<Unit filename="connection.hpp" />
 		<Unit filename="foreach.hpp" />
 		<Unit filename="future.hpp" />
-		<Unit filename="handlemessage.cpp" />
+		<Unit filename="handlemessage.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
 		<Unit filename="handlemessage.hpp" />
 		<Unit filename="main.cpp" />
-		<Unit filename="memstream.cpp" />
-		<Unit filename="memstream.hpp" />
 		<Unit filename="metaext.cpp" />
 		<Unit filename="metaext.hpp" />
+		<Unit filename="runcall.cpp" />
+		<Unit filename="runcall.hpp" />
 		<Unit filename="testclass.cpp" />
 		<Unit filename="testclass.hpp" />
 		<Unit filename="../cobject-shared/messages.hpp" />

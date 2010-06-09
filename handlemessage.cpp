@@ -1,6 +1,8 @@
 #include "handlemessage.hpp"
 #include "serialize.hpp"
 
+#error obsolete file
+
 using namespace std;
 using namespace boost;
 using namespace boost::asio;

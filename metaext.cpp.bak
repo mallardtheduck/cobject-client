@@ -81,19 +81,22 @@ PolyWrapper<ITypeInfo> TypeToTypeInfo(const Type_t &type){
 }
 
 MetaObject ObjectIDToMetaObject(Connection &conn, ObjectID_t oid){
-    vector<::MethodInfo> objectdef=conn.GetObjectDef(oid);
+    vector< ::MethodInfo> objectdef=conn.GetObjectDef(oid);
     stringstream clsname;
     clsname << "OBJECT" << oid;
-    MetaObject obj;
+    MetaClass cls(clsname.str());
+    MetaObject obj=New(cls);
     foreach(::MethodInfo &i, objectdef){
         obj.AddMethod(i.MethodName, COFnWrap(conn, clsname.str(), i));
     }
     shared_ptr<ObjectHandle> objh;
     if(!conn.TryGetObject(oid, objh)){
-        objh=new ObjectHandle(conn, oid);
+        objh.reset(new ObjectHandle(conn, oid));
         conn.AddObject(oid, objh);
     }
-    
+    obj.GetState().Members["__OBJECTHANDLE"] = objh;
+    obj.GetState().Members["__OBJECT_ID"] = oid;
+    return obj;
 }
 
 COFnWrap::COFnWrap(Connection &c, const string &clsname, ::MethodInfo &i) : _conn(c), _info(i), _classname(clsname)
@@ -117,7 +120,7 @@ any COFnWrap::Call(MetaInfo &info, many args){
     else msgID=Messages::CallMethod;
     stringstream out;
     Serialize(out, msgID);
-    if(msgID==Messages::CallMethod || msgID==Messages::ConstructObject){
+    if(msgID==Messages::CallStatic || msgID==Messages::ConstructObject){
         Serialize(out, _conn._nsname);
         Serialize(out, _classname);
     }
@@ -160,7 +163,11 @@ any COFnWrap::Call(MetaInfo &info, many args){
     }
     if(msgID==Messages::CallStatic || msgID==Messages::CallMethod){
         TypedVal res=any_cast<TypedVal>(reply);
-        return res.val;
+        if(res.type!=Types::Object)return res.val;
+        else{
+            MetaObject obj=ObjectIDToMetaObject(_conn, any_cast<ObjectID_t>(res.val));
+            return obj;
+        }
     }
     throw std::runtime_error("Call failure");
 }

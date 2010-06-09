@@ -4,7 +4,6 @@
 #include <boost/asio.hpp>
 #include <meta.hpp>
 
-#include "handlemessage.hpp"
 #include "serialize.hpp"
 #include "foreach.hpp"
 #include "connection.hpp"
@@ -13,17 +12,14 @@
 
 using namespace std;
 using namespace boost;
-using namespace boost::asio;
-using namespace boost::asio::ip;
-using namespace meta;
 
 int main()
 {
     try
     {
-        Connection conn;
+        cobject::Connection conn;
 
-        BrokerDetails det=conn.GetBrokerDetails();
+        cobject::BrokerDetails det=conn.GetBrokerDetails();
         cout << "Broker details:" << endl;
         cout << "  Protocol version: " << det.ProtocolVersion << endl;
         cout << "  Broker name: " << det.BrokerName << endl;
@@ -46,12 +42,22 @@ int main()
             }
         }
 
-        MetaClass myclass=conn.GetClass(ns, TestClass().GetName());
+        meta::MetaClass myclass=conn.GetClass(ns, TestClass().GetName());
         cout << "Class name: '" << myclass.GetName() << "'" << endl;
-        MetaObject myobject=New(myclass);
+        meta::MetaObject myobject=New(myclass);
         string hi=myobject["hello"].Call<string>();
         cout << "Result of call: '" << hi << "'" << endl;
-        while(true);
+        string hi2=myobject["saytimes"].Call<string>(make_tuple(string("hi!"), 3));
+        cout << "Result of call: '" << hi2 << "'" << endl;
+        meta::MetaObject myobject2=myobject["getobject"].Call<meta::MetaObject>();
+        foreach(Q(pair<string, meta::MethodInfo>) info, myobject2.GetMethodInfo()){
+            cout << "Method: " << info.first << endl;
+        }
+        string hi3=myobject2["hello"].Call<string>();
+        cout << "Result of call: '" << hi3 << "'" << endl;
+        string hi4=myobject["callhello"].Call<string>(make_tuple(myobject2));
+        cout << "Result of call: '" << hi4 << "'" << endl;
+        while(true) sleep(10);
 
     }
     catch (std::exception& e)

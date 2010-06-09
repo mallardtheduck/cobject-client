@@ -18,12 +18,25 @@ META_METHOD(saytimes, string, Q(tuple<string, int>)){
     return ret;
 }
 
+META_METHOD(getobject, MetaObject, NO_PARAMS){
+    MetaClass cls("returnclass");
+    cls.AddMethod("hello", StdFn(hello));
+    return New(cls);
+}
+
+META_METHOD(callhello, string, tuple<MetaObject>){
+    MetaObject &obj=args.get<0>();
+    return obj["hello"].Call<string>();
+}
+
 MetaClass TestClass(){
     static bool done=false;
     static MetaClass cls("testclass");
     if(!done){
         cls.AddMethod("hello", StdFn(hello));
         cls.AddMethod("saytimes", StdFn(saytimes));
+        cls.AddMethod("getobject", StdFn(getobject));
+        cls.AddMethod("callhello", StdFn(callhello));
         done=true;
     }
     return cls;

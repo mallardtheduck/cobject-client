@@ -2,23 +2,44 @@
 #define FUTURE_HPP_INCLUDED
 
 #include <boost/thread.hpp>
+using namespace boost;
 
+//! A class to hold a value that will be filled in by another thread.
+/*!
+    This class works as follows - thread A creates a Future and passes a reference/pointer to it to thread B
+    both threads continue processing. When thread A requires the value, it calls Get(). This will return immediately
+    if thread B has already Set() a value, otherwise it blocks until it does.
+*/
 template<typename T> class Future{
     private:
         T _result;
-        barrier _bar;
+        mutable condition_variable _cond;
         bool _avail;
-        mutex _mut;
+        mutable mutex _mut;
+
     public:
-        Future() : _bar(2), _avail(false);
+        //! Constructor
+        Future() : _avail(false){}
+
         T& Get(){
-            _mut.lock();
-            if(!_avail)_bar.wait();
-            _mut.unlock();
+            unique_lock<mutex> lock(_mut);
+            while(!_avail) _cond.wait(lock);
+            return _result;
+        }
+        const T& Get() const{
+            unique_lock<mutex> lock(_mut);
+            while(!_avail) _cond.wait(lock);
             return _result;
         }
 
-        void Set(T value);
-}
+        void Set(T value){
+            _result=value;
+            {
+                lock_guard<mutex> lock(_mut);
+                _avail=true;
+            }
+            _cond.notify_all();
+        }
+};
 
 #endif // FUTURE_HPP_INCLUDED

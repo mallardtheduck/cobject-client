@@ -27,6 +27,29 @@
 					<Add option="-s" />
 				</Linker>
 			</Target>
+			<Target title="Debug Library">
+				<Option output="bin/DebugLib/libcobject-client" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/DebugLib/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release Library">
+				<Option output="bin/ReleaseLib/libcobject-client" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/ReleaseLib/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
@@ -46,17 +69,27 @@
 		<Unit filename="connection.hpp" />
 		<Unit filename="foreach.hpp" />
 		<Unit filename="future.hpp" />
-		<Unit filename="handlemessage.cpp" />
+		<Unit filename="handlemessage.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
 		<Unit filename="handlemessage.hpp" />
-		<Unit filename="main.cpp" />
-		<Unit filename="memstream.cpp" />
-		<Unit filename="memstream.hpp" />
+		<Unit filename="main.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="metaext.cpp" />
 		<Unit filename="metaext.hpp" />
 		<Unit filename="runcall.cpp" />
 		<Unit filename="runcall.hpp" />
-		<Unit filename="testclass.cpp" />
-		<Unit filename="testclass.hpp" />
+		<Unit filename="testclass.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="testclass.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="../cobject-shared/messages.hpp" />
 		<Unit filename="../cobject-shared/serialize.cpp" />
 		<Unit filename="../cobject-shared/serialize.hpp" />

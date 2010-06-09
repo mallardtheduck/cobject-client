@@ -1,11 +1,10 @@
 # depslib dependency file v1.0
-1275134417 source:/home/mallard/Projects/cobject-client/main.cpp
+1275915369 source:/home/mallard/Projects/cobject-client/main.cpp
 	<iostream>
 	<string>
 	<sstream>
 	<boost/asio.hpp>
 	<meta.hpp>
-	"handlemessage.hpp"
 	"serialize.hpp"
 	"foreach.hpp"
 	"connection.hpp"
@@ -20,7 +19,7 @@
 	"dbgfnwrap.hpp"
 	"comp_util.hpp"
 
-1275397424 /home/mallard/Projects/meta/metaclass.hpp
+1275925263 /home/mallard/Projects/meta/metaclass.hpp
 	<string>
 	<vector>
 	<map>
@@ -42,9 +41,9 @@
 	<string>
 	<cxxabi.h>
 
-1267874968 /home/mallard/Projects/meta/polywrapper.hpp
+1275927504 /home/mallard/Projects/meta/polywrapper.hpp
 
-1267368564 /home/mallard/Projects/meta/fnwrap.hpp
+1275920870 /home/mallard/Projects/meta/fnwrap.hpp
 	<iostream>
 	<typeinfo>
 	<boost/any.hpp>
@@ -54,7 +53,7 @@
 	"metacontext.hpp"
 	"tuple_util.hpp"
 
-1267369927 /home/mallard/Projects/meta/metacontext.hpp
+1275932095 /home/mallard/Projects/meta/metacontext.hpp
 	<string>
 	<map>
 	<boost/any.hpp>
@@ -62,11 +61,11 @@
 	"metaclass.hpp"
 	"tuple_util.hpp"
 
-1267368603 /home/mallard/Projects/meta/metastate.hpp
+1275932095 /home/mallard/Projects/meta/metastate.hpp
 	<map>
 	<boost/any.hpp>
 
-1267368640 /home/mallard/Projects/meta/tuple_util.hpp
+1275932062 /home/mallard/Projects/meta/tuple_util.hpp
 	<boost/any.hpp>
 	<boost/tuple/tuple.hpp>
 	<boost/tuple/tuple_io.hpp>
@@ -74,7 +73,7 @@
 	"comp_util.hpp"
 	"util.hpp"
 
-1275133952 /home/mallard/Projects/meta/caller.hpp
+1275918936 /home/mallard/Projects/meta/caller.hpp
 	<string>
 	"util.hpp"
 	"metacontext.hpp"
@@ -82,10 +81,10 @@
 	"tuple_util.hpp"
 	"exceptions.hpp"
 
-1272542246 /home/mallard/Projects/meta/exceptions.hpp
+1275920228 /home/mallard/Projects/meta/exceptions.hpp
 	<stdexcept>
 
-1275841318 /home/mallard/Projects/meta/metaobject.hpp
+1275926940 /home/mallard/Projects/meta/metaobject.hpp
 	<iostream>
 	<string>
 	<stdexcept>
@@ -97,7 +96,7 @@
 	"tuple_util.hpp"
 	"caller.hpp"
 
-1267368569 /home/mallard/Projects/meta/iface.hpp
+1275921395 /home/mallard/Projects/meta/iface.hpp
 	<string>
 	<vector>
 	"metaclass.hpp"
@@ -105,16 +104,16 @@
 	"polywrapper.hpp"
 	"util.hpp"
 
-1275841085 /home/mallard/Projects/meta/new.hpp
+1275927045 /home/mallard/Projects/meta/new.hpp
 	"metaclass.hpp"
 	"metaobject.hpp"
 
-1267368623 /home/mallard/Projects/meta/stdfnwrap.hpp
+1275931344 /home/mallard/Projects/meta/stdfnwrap.hpp
 	"polywrapper.hpp"
 	"fnwrap.hpp"
 	"tuple_util.hpp"
 
-1267368541 /home/mallard/Projects/meta/dbgfnwrap.hpp
+1275920173 /home/mallard/Projects/meta/dbgfnwrap.hpp
 	<typeinfo>
 	<iostream>
 	<vector>
@@ -135,7 +134,7 @@
 	"handlemessage.hpp"
 	"serialize.hpp"
 
-1271330660 /home/mallard/Projects/cobject-client/handlemessage.hpp
+1275914444 /home/mallard/Projects/cobject-client/handlemessage.hpp
 	<string>
 	<vector>
 	<boost/asio.hpp>
@@ -147,53 +146,53 @@
 	<boost/cstdint.hpp>
 	<string>
 
-1275502777 /home/mallard/Projects/cobject-shared/messages.hpp
+1275934216 /home/mallard/Projects/cobject-shared/messages.hpp
 	<boost/cstdint.hpp>
 	<string>
 	<vector>
 
-1275845840 /home/mallard/Projects/cobject-shared/serialize.hpp
+1275936811 /home/mallard/Projects/cobject-shared/serialize.hpp
 	<iostream>
 	<vector>
 	<boost/cstdint.hpp>
 	<boost/any.hpp>
 	"messages.hpp"
 
-1275845556 source:/home/mallard/Projects/cobject-shared/serialize.cpp
+1275914048 source:/home/mallard/Projects/cobject-shared/serialize.cpp
 	"serialize.hpp"
 	<stdexcept>
 
-1275838839 source:/home/mallard/Projects/cobject-client/metaext.cpp
+1275914962 source:/home/mallard/Projects/cobject-client/metaext.cpp
 	"metaext.hpp"
 	"serialize.hpp"
 	<stdexcept>
 
-1275656201 /home/mallard/Projects/cobject-client/metaext.hpp
+1275914926 /home/mallard/Projects/cobject-client/metaext.hpp
 	<vector>
 	<meta.hpp>
 	"../cobject-shared/typemap.hpp"
 	"messages.hpp"
 	"connection.hpp"
 
-1270655185 /home/mallard/Projects/cobject-shared/typemap.hpp
+1275937109 /home/mallard/Projects/cobject-shared/typemap.hpp
 	"messages.hpp"
 	<typeinfo>
 
-1275842058 source:/home/mallard/Projects/cobject-client/testclass.cpp
+1275905229 source:/home/mallard/Projects/cobject-client/testclass.cpp
 	"testclass.hpp"
 	<string>
 
 1270648797 /home/mallard/Projects/cobject-client/testclass.hpp
 	<meta.hpp>
 
-1275502903 source:/home/mallard/Projects/cobject-shared/typemap.cpp
+1275912678 source:/home/mallard/Projects/cobject-shared/typemap.cpp
 	"typemap.hpp"
 	<typeinfo>
 	<boost/cstdint.hpp>
 	<string>
 	<meta.hpp>
 
-1275840768 source:/home/mallard/Projects/cobject-client/connection.cpp
+1275914903 source:/home/mallard/Projects/cobject-client/connection.cpp
 	"connection.hpp"
 	<boost/bind.hpp>
 	<unistd.h>
@@ -211,7 +210,7 @@
 	<boost/iostreams/stream.hpp>
 	<boost/asio.hpp>
 
-1275840733 /home/mallard/Projects/cobject-client/connection.hpp
+1276001749 /home/mallard/Projects/cobject-client/connection.hpp
 	<vector>
 	<string>
 	<queue>
@@ -231,7 +230,7 @@
 1274951695 /home/mallard/Projects/cobject-client/future.hpp
 	<boost/thread.hpp>
 
-1275845559 /home/mallard/Projects/cobject-client/runcall.hpp
+1275914525 /home/mallard/Projects/cobject-client/runcall.hpp
 	"messages.hpp"
 	<meta.hpp>
 	<vector>
@@ -239,7 +238,7 @@
 	"connection.hpp"
 	"serialize.hpp"
 
-1275841580 source:/home/mallard/Projects/cobject-client/runcall.cpp
+1275915061 source:/home/mallard/Projects/cobject-client/runcall.cpp
 	"runcall.hpp"
 	<boost/thread.hpp>
 	<boost/bind.hpp>

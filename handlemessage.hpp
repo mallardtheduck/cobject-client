@@ -15,9 +15,13 @@ using namespace boost::asio;
 using namespace boost::asio::ip;
 using namespace meta;
 
-BrokerDetails GetBrokerDetails(tcp::iostream &s);
-string SetNamesapce(tcp::iostream &s, const string &ns);
-vector<string> ListNamespaces(tcp::iostream &s);
-void RegisterClass(tcp::iostream &s, const MetaClass &cls);
+namespace cobject
+{
 
+    BrokerDetails GetBrokerDetails(tcp::iostream &s);
+    string SetNamesapce(tcp::iostream &s, const string &ns);
+    vector<string> ListNamespaces(tcp::iostream &s);
+    void RegisterClass(tcp::iostream &s, const MetaClass &cls);
+
+}
 #endif // HANDLEMESSAGE_HPP_INCLUDED
