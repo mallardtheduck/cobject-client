@@ -4,7 +4,7 @@
 #include <boost/asio.hpp>
 #include <meta.hpp>
 
-#include "serialize.hpp"
+//#include "serialize.hpp"
 #include "foreach.hpp"
 #include "connection.hpp"
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="connection.cpp" open="1" top="1" tabpos="6">
+	<File name="connection.cpp" open="1" top="0" tabpos="6">
 		<Cursor position="12263" topLine="373" />
 	</File>
 	<File name="connection.hpp" open="1" top="0" tabpos="1">
@@ -19,7 +19,7 @@
 	<File name="handlemessage.hpp" open="1" top="0" tabpos="3">
 		<Cursor position="573" topLine="0" />
 	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="2">
+	<File name="main.cpp" open="1" top="1" tabpos="2">
 		<Cursor position="2123" topLine="0" />
 	</File>
 	<File name="metaext.cpp" open="0" top="0" tabpos="12">
