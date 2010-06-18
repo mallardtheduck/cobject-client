@@ -163,7 +163,7 @@ namespace cobject
         PutReply("BrokerDetails", ret);
     }
 
-    string Connection::SetNamesapce(const string &ns)
+    string Connection::SetNamespace(const string &ns)
     {
         stringstream out;
         SetupReply("SetNamespace");
@@ -277,7 +277,7 @@ namespace cobject
         SetupReply(replyslot);
         Send(out.str());
         any ret=GetReply(replyslot);
-        return MakeMetaClass(*this, any_cast<ClassInfo>(ret));
+        return MakeMetaClass(*this, ns, any_cast<ClassInfo>(ret));
     }
 
     void Connection::Recv_GetClassDef(iostream &s)

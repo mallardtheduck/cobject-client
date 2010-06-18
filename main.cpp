@@ -26,7 +26,7 @@ int main()
         cout << "  Vendor: " << det.Vendor << endl;
         cout << "  Version: " << det.DisplayVersion << endl;
 
-        string ns=conn.SetNamesapce("TestApp");
+        string ns=conn.SetNamespace("TestApp");
         cout << "Namespace: " << ns << endl;
 
         conn.RegisterClass(TestClass());

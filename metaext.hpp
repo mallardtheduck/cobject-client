@@ -37,10 +37,11 @@ namespace cobject
     /*!
         Create a class proxy from a ClassInfo structure
         \param conn     The connection to associate the new class proxy with
+        \param nsname   The namespace that owns the class
         \param info     The ClassInfo structure
         \return A class proxy
     */
-    MetaClass MakeMetaClass(Connection &conn, ClassInfo info);
+    MetaClass MakeMetaClass(Connection &conn, const string& nsname, ClassInfo info);
 
     /*!
         Convert a CrossObject Type_t to a Meta ITypeInfo object
@@ -68,10 +69,11 @@ namespace cobject
         /*!
             Constructor
             \param c        The connection to use for calls
+            \param nsname   The namespace that owns the class
             \param clsname  The name of the class
             \param i        The CrossObject MethodInfo
         */
-        COFnWrap(Connection &c, const string &clsname, MethodInfo &i);
+        COFnWrap(Connection &c, const string &nsname, const string &clsname, MethodInfo &i);
         /*!
             Stub for type checking.
             \note Typechecking is not supported by this IFnWrap, so this function always returns true.
@@ -110,7 +112,7 @@ namespace cobject
     private:
         Connection &_conn;
         MethodInfo _info;
-        string _classname;
+        string _nsname, _classname;
         static CallID_t _callid;
     };
 

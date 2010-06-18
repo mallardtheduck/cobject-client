@@ -118,7 +118,7 @@ namespace cobject
             \param ns   The requested namespace
             \return The actual assigned namespace
         */
-        string SetNamesapce(const string &ns);
+        string SetNamespace(const string &ns);
         /*!
             List the namespaces known by the broker
             \return A list of known namespaces

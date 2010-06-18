@@ -60,10 +60,10 @@
 		</Compiler>
 		<Linker>
 			<Add library="../meta/bin/DebugLib/libmeta.a" />
-			<Add library="boost_system" />
-			<Add library="boost_filesystem" />
+			<Add library="boost_system-mt" />
+			<Add library="boost_filesystem-mt" />
 			<Add library="pthread" />
-			<Add library="boost_thread" />
+			<Add library="boost_thread-mt" />
 		</Linker>
 		<Unit filename="connection.cpp" />
 		<Unit filename="connection.hpp" />

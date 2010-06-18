@@ -44,17 +44,17 @@ namespace cobject
         return ret;
     }
 
-    MetaClass MakeMetaClass(Connection &conn, ClassInfo cls)
+    MetaClass MakeMetaClass(Connection &conn, const string &nsname, ClassInfo cls)
     {
         MetaClass ret(cls.ClassName);
         foreach(MethodInfo &i, cls.Methods)
         {
-            ret.AddMethod(i.MethodName, COFnWrap(conn, cls.ClassName, i));
+            ret.AddMethod(i.MethodName, COFnWrap(conn, nsname, cls.ClassName, i));
         }
         MethodInfo mi;
         mi.MethodName="ctor";
         mi.ReturnType=Types::Void;
-        if (!ret.HasMethod("ctor")) ret.AddMethod("ctor", COFnWrap(conn, cls.ClassName, mi));
+        if (!ret.HasMethod("ctor")) ret.AddMethod("ctor", COFnWrap(conn, nsname, cls.ClassName, mi));
         return ret;
     }
 
@@ -100,7 +100,7 @@ namespace cobject
         MetaObject obj=New(cls);
         foreach(MethodInfo &i, objectdef)
         {
-            obj.AddMethod(i.MethodName, COFnWrap(conn, clsname.str(), i));
+            obj.AddMethod(i.MethodName, COFnWrap(conn, "NOT_STATIC_OR_CTOR", clsname.str(), i));
         }
         shared_ptr<ObjectHandle> objh;
         if (!conn.TryGetObject(oid, objh))
@@ -113,7 +113,7 @@ namespace cobject
         return obj;
     }
 
-    COFnWrap::COFnWrap(Connection &c, const string &clsname, MethodInfo &i) : _conn(c), _info(i), _classname(clsname)
+    COFnWrap::COFnWrap(Connection &c, const string &nsname, const string &clsname, MethodInfo &i) : _conn(c), _info(i), _nsname(nsname), _classname(clsname)
     {
         SetStatic(_info.IsStatic);
     }
@@ -139,7 +139,7 @@ namespace cobject
         Serialize(out, msgID);
         if (msgID==Messages::CallStatic || msgID==Messages::ConstructObject)
         {
-            Serialize(out, _conn._nsname);
+            Serialize(out, _nsname);
             Serialize(out, _classname);
         }
         if (msgID==Messages::CallMethod)
@@ -157,7 +157,7 @@ namespace cobject
         vector<TypedVal> pargs;
         for (size_t i=0; i<_info.ParamTypes.size();++i)
         {
-            TypedVal tv=TypedVal(_info.ParamTypes[i], args[i]);
+            TypedVal tv(_info.ParamTypes[i], args[i]);
             if (tv.type==Types::Object)
             {
                 MetaObject &obj=any_cast<MetaObject&>(tv.val);
