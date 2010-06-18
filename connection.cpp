@@ -11,10 +11,10 @@ using namespace std;
 namespace cobject
 {
 
-    Connection::Connection() :
+    Connection::Connection(const string &host, const string &port) :
             _term(new bool(false)),
             _sendready(false),
-            _s("localhost", "3300"),
+            _s(host, port),
             _sendthread(bind(&Connection::Sender,this)),
             _recvthread(bind(&Connection::Reciever,this))
     {}

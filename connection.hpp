@@ -79,7 +79,12 @@ namespace cobject
 
     public:
         //! Constructor
-        Connection();
+        /*!
+            Create a new connection.
+            \param host The host to connect to
+            \param port The TCP port to connect to
+        */
+        Connection(const string &host="127.0.0.1", const string &port="3300");
         //! Destructor
         ~Connection();
 
