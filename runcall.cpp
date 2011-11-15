@@ -38,7 +38,7 @@ namespace cobject
 
     void Do_RunConstruct(Connection *conn, CallID_t callid, MetaClass &cls, vector<TypedVal> args)
     {
-        shared_ptr<MetaObject> obj(NewPtr(cls));
+        boost::shared_ptr<MetaObject> obj(NewPtr(cls));
         ObjectID_t oid=conn->AddOwnedObject(obj);
         stringstream out;
         Serialize(out, Messages::Construct);
@@ -53,7 +53,7 @@ namespace cobject
         vector<any> anyargs=VectorTVtoVectorAny(args);
         ProcessObjects(*conn, args, anyargs);
         any ret=cls[method].Call(anyargs);
-        shared_ptr<MetaObject> obj2;
+        boost::shared_ptr<MetaObject> obj2;
         Type_t type=MapType(cls.GetMethodInfo(method).GetReturnType()->Info());
         if (type==Types::Object)
         {
@@ -79,12 +79,12 @@ namespace cobject
         conn->Send(out.str());
     }
 
-    void Do_RunMethodCall(Connection *conn, CallID_t callid, shared_ptr<MetaObject> obj, const string &method, vector<TypedVal> args)
+    void Do_RunMethodCall(Connection *conn, CallID_t callid, boost::shared_ptr<MetaObject> obj, const string &method, vector<TypedVal> args)
     {
         vector<any> anyargs=VectorTVtoVectorAny(args);
         ProcessObjects(*conn, args, anyargs);
         any ret=(*obj)[method].Call(anyargs);
-        shared_ptr<MetaObject> obj2;
+        boost::shared_ptr<MetaObject> obj2;
         Type_t type=MapType(obj->GetMethodInfo(method).GetReturnType()->Info());
         if (type==Types::Object)
         {
@@ -120,7 +120,7 @@ namespace cobject
         thread dothread(bind(&Do_RunStaticCall, &conn, callid, cls, method, args));
     }
 
-    void RunMethodCall(Connection &conn, CallID_t callid, shared_ptr<MetaObject> obj, const string &method, vector<TypedVal> args)
+    void RunMethodCall(Connection &conn, CallID_t callid, boost::shared_ptr<MetaObject> obj, const string &method, vector<TypedVal> args)
     {
         thread dothread(bind(&Do_RunMethodCall, &conn, callid, obj, method, args));
     }

@@ -102,7 +102,7 @@ namespace cobject
         {
             obj.AddMethod(i.MethodName, COFnWrap(conn, "NOT_STATIC_OR_CTOR", clsname.str(), i));
         }
-        shared_ptr<ObjectHandle> objh;
+        boost::shared_ptr<ObjectHandle> objh;
         if (!conn.TryGetObject(oid, objh))
         {
             objh.reset(new ObjectHandle(conn, oid));

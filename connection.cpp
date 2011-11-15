@@ -29,7 +29,7 @@ namespace cobject
 
     void Connection::Sender()
     {
-        shared_ptr<bool> term=_term;
+        boost::shared_ptr<bool> term=_term;
         _s.rdbuf()->pubsetbuf(0, 0);
         while (!_sendready);
         while (!*term)
@@ -46,7 +46,7 @@ namespace cobject
 
     void Connection::Reciever()
     {
-        shared_ptr<bool> term=_term;
+        boost::shared_ptr<bool> term=_term;
         string welcome;
         Deserialize(_s, welcome);
         cout << welcome << endl;
@@ -243,7 +243,7 @@ namespace cobject
     MetaObject Connection::RegisterObject(const MetaObject &obj)
     {
         ObjectID_t newoid=++_objectid;
-        _regobjects[newoid]=shared_ptr<MetaObject>(new MetaObject(obj));
+        _regobjects[newoid]=boost::shared_ptr<MetaObject>(new MetaObject(obj));
         stringstream s;
         Serialize(s, Messages::RegisterObject);
         Serialize(s, newoid);
@@ -429,7 +429,7 @@ namespace cobject
         _regobjects.erase(oid);
     }
 
-    bool Connection::TryGetObject(ObjectID_t oid, shared_ptr<ObjectHandle> &obj)
+    bool Connection::TryGetObject(ObjectID_t oid, boost::shared_ptr<ObjectHandle> &obj)
     {
         if (_usedobjects.find(oid)!=_usedobjects.end())
         {
@@ -439,12 +439,12 @@ namespace cobject
         else return false;
     }
 
-    void Connection::AddObject(ObjectID_t oid, shared_ptr<ObjectHandle> obj)
+    void Connection::AddObject(ObjectID_t oid, boost::shared_ptr<ObjectHandle> obj)
     {
         _usedobjects[oid]=obj;
     }
 
-    ObjectID_t Connection::AddOwnedObject(shared_ptr<MetaObject> obj)
+    ObjectID_t Connection::AddOwnedObject(boost::shared_ptr<MetaObject> obj)
     {
         ObjectID_t oid=++_objectid;
         _regobjects[oid]=obj;

@@ -42,6 +42,6 @@ namespace cobject
         \param method   The name of the method
         \param args     The call arguements
     */
-    void RunMethodCall(Connection &conn, CallID_t callid, shared_ptr<MetaObject> obj, const string &method, vector<TypedVal> args);
+    void RunMethodCall(Connection &conn, CallID_t callid, boost::shared_ptr<MetaObject> obj, const string &method, vector<TypedVal> args);
 }
 #endif // RUNCALL_HPP_INCLUDED

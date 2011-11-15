@@ -47,7 +47,7 @@ int main()
         meta::MetaObject myobject=New(myclass);
         string hi=myobject["hello"].Call<string>();
         cout << "Result of call: '" << hi << "'" << endl;
-        string hi2=myobject["saytimes"].Call<string>(make_tuple(string("hi!"), 3));
+        string hi2=myobject["saytimes"].Call<string>(MArgs(string("hi!"), 3));
         cout << "Result of call: '" << hi2 << "'" << endl;
         meta::MetaObject myobject2=myobject["getobject"].Call<meta::MetaObject>();
         foreach(Q(pair<string, meta::MethodInfo>) info, myobject2.GetMethodInfo()){
@@ -55,7 +55,7 @@ int main()
         }
         string hi3=myobject2["hello"].Call<string>();
         cout << "Result of call: '" << hi3 << "'" << endl;
-        string hi4=myobject["callhello"].Call<string>(make_tuple(myobject2));
+        string hi4=myobject["callhello"].Call<string>(MArgs(myobject2));
         cout << "Result of call: '" << hi4 << "'" << endl;
         while(true) sleep(10);
 

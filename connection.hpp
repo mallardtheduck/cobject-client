@@ -24,7 +24,7 @@ using namespace std;
 namespace cobject
 {
 
-    typedef shared_ptr<Future<any> > ReplyPtr; //!< Typedef for reply slot
+    typedef boost::shared_ptr<Future<any> > ReplyPtr; //!< Typedef for reply slot
 
     class ObjectHandle;
 
@@ -37,7 +37,7 @@ namespace cobject
     {
         friend class COFnWrap;
     private:
-        shared_ptr<bool> _term;
+        boost::shared_ptr<bool> _term;
         volatile bool _sendready;
         tcp::iostream _s;
         queue<string> _sendqueue;
@@ -49,8 +49,8 @@ namespace cobject
 
         map<string, ReplyPtr> _replymap;
         map<string, meta::MetaClass> _regclasses;
-        map<ObjectID_t, shared_ptr<meta::MetaObject> > _regobjects;
-        map<ObjectID_t, shared_ptr<ObjectHandle> > _usedobjects;
+        map<ObjectID_t, boost::shared_ptr<meta::MetaObject> > _regobjects;
+        map<ObjectID_t, boost::shared_ptr<ObjectHandle> > _usedobjects;
 
         thread _sendthread;
         thread _recvthread;
@@ -166,13 +166,13 @@ namespace cobject
             \param obj  A pointer to hold the object handle
             \return true if an object handle was found and assigned to obj, false otherwise
         */
-        bool TryGetObject(ObjectID_t oid, shared_ptr<ObjectHandle> &obj);
+        bool TryGetObject(ObjectID_t oid, boost::shared_ptr<ObjectHandle> &obj);
         /*!
             Add a new handle to the list of objects referenced
             \param oid  The object ID
             \param obj  A pointer to the object handle
         */
-        void AddObject(ObjectID_t oid, shared_ptr<ObjectHandle> obj);
+        void AddObject(ObjectID_t oid, boost::shared_ptr<ObjectHandle> obj);
 
         /*!
             Add an object to the list of objects owned by this connection - without registering it
@@ -180,7 +180,7 @@ namespace cobject
             \param obj  The object to add
             \return An ObjectID for referring to the object
         */
-        ObjectID_t AddOwnedObject(shared_ptr<meta::MetaObject> obj);
+        ObjectID_t AddOwnedObject(boost::shared_ptr<meta::MetaObject> obj);
         /*!
             Remove an object from the list of objects owned.
             Used in object destruction
