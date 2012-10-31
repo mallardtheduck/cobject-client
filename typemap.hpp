@@ -13,6 +13,8 @@ namespace cobject
         \return The CrossObject type equivelent to the type_info
     */
     Type_t MapType(const type_info &t);
+	
+	Type_t MapArrayType(const std::type_info &t);
 
     /*!
         Return the CrossObject type matching a C++ type

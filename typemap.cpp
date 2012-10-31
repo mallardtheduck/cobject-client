@@ -29,8 +29,30 @@ namespace cobject
         if (t==typeid(bool)) return Types::Bool;
         if (t==typeid(meta::MetaObject)) return Types::Object;
         if (t==typeid(NullType)) return Types::Void;
-        return Types::Unknown;
+        return MapArrayType(t);
     }
+	
+	Type_t MapArrayType(const std::type_info &t)
+	{
+		if (t==typeid(vector<int8_t>)) return Types::ArrayPrefix + Types::Int8;
+        if (t==typeid(vector<int16_t>)) return Types::ArrayPrefix + Types::Int16;
+        if (t==typeid(vector<int32_t>)) return Types::ArrayPrefix + Types::Int32;
+        if (t==typeid(vector<int64_t>)) return Types::ArrayPrefix + Types::Int64;
+        if (t==typeid(vector<uint8_t>)) return Types::ArrayPrefix + Types::UInt8;
+        if (t==typeid(vector<uint16_t>)) return Types::ArrayPrefix + Types::UInt16;
+        if (t==typeid(vector<uint32_t>)) return Types::ArrayPrefix + Types::UInt32;
+        if (t==typeid(vector<uint64_t>)) return Types::ArrayPrefix + Types::UInt64;
+        if (t==typeid(vector<char>)) return Types::ArrayPrefix + Types::UTF8;
+        if (t==typeid(vector<wchar_t>)) return Types::ArrayPrefix + Types::UTF16;
+        if (t==typeid(vector<float>)) return Types::ArrayPrefix + Types::Float32;
+        if (t==typeid(vector<double>)) return Types::ArrayPrefix + Types::Float64;
+        if (t==typeid(vector<std::string>)) return Types::ArrayPrefix + Types::String;
+        if (t==typeid(vector<std::wstring>)) return Types::ArrayPrefix + Types::WString;
+        if (t==typeid(vector<bool>)) return Types::ArrayPrefix + Types::Bool;
+        if (t==typeid(vector<meta::MetaObject>)) return Types::ArrayPrefix + Types::Object;
+        if (t==typeid(vector<NullType>)) return Types::ArrayPrefix + Types::Void;
+		return Types::ArrayPrefix + Types::Unknown;
+	}
 	
 	bool IsArray(Type_t type)
 	{
