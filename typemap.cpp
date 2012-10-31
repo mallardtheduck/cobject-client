@@ -3,10 +3,7 @@
 #include <typeinfo>
 #include <boost/cstdint.hpp>
 #include <string>
-
-#ifdef CO_CLIENT
-#include <meta.hpp>
-#endif
+#include <meta/meta.hpp>
 
 using namespace boost;
 
@@ -30,10 +27,8 @@ namespace cobject
         if (t==typeid(std::string)) return Types::String;
         if (t==typeid(std::wstring)) return Types::WString;
         if (t==typeid(bool)) return Types::Bool;
-#ifdef CO_CLIENT
         if (t==typeid(meta::MetaObject)) return Types::Object;
         if (t==typeid(NullType)) return Types::Void;
-#endif
         return Types::Unknown;
     }
 }

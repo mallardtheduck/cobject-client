@@ -57,7 +57,7 @@ int main()
         cout << "Result of call: '" << hi3 << "'" << endl;
         string hi4=myobject["callhello"].Call<string>(MArgs(myobject2));
         cout << "Result of call: '" << hi4 << "'" << endl;
-        while(true) sleep(10);
+        while(true) sleep(100);
 
     }
     catch (std::exception& e)
