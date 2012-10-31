@@ -14,6 +14,11 @@ namespace cobject
     */
     Type_t MapType(const type_info &t);
 	
+	/*!
+        Convert a C++ type_info value to a CrossObject array type
+        \param t    A C++ type_info value
+        \return The CrossObject array type equivelent to the type_info
+    */
 	Type_t MapArrayType(const std::type_info &t);
 
     /*!
