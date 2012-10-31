@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <meta/meta.hpp>
-#include "../cobject-shared/typemap.hpp"
+#include "typemap.hpp"
 #include "messages.hpp"
 #include "connection.hpp"
 
