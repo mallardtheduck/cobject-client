@@ -8,7 +8,7 @@
 #include <boost/any.hpp>
 #include <boost/asio.hpp>
 #include <boost/shared_ptr.hpp>
-#include <meta.hpp>
+#include <meta/meta.hpp>
 
 #include "memstream.hpp"
 #include "handlemessage.hpp"

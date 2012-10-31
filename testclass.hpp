@@ -1,7 +1,7 @@
 #ifndef TESTCLASS_HPP_INCLUDED
 #define TESTCLASS_HPP_INCLUDED
 
-#include <meta.hpp>
+#include <meta/meta.hpp>
 
 meta::MetaClass TestClass();
 

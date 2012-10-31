@@ -2,7 +2,7 @@
 #define RUNCALL_HPP_INCLUDED
 
 #include "messages.hpp"
-#include <meta.hpp>
+#include <meta/meta.hpp>
 #include <vector>
 #include <boost/shared_ptr.hpp>
 #include "connection.hpp"

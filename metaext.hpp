@@ -2,7 +2,7 @@
 #define METAEXT_HPP_INCLUDED
 
 #include <vector>
-#include <meta.hpp>
+#include <meta/meta.hpp>
 #include "../cobject-shared/typemap.hpp"
 #include "messages.hpp"
 #include "connection.hpp"

@@ -2,7 +2,7 @@
 #include <string>
 #include <sstream>
 #include <boost/asio.hpp>
-#include <meta.hpp>
+#include <meta/meta.hpp>
 
 //#include "serialize.hpp"
 #include "foreach.hpp"

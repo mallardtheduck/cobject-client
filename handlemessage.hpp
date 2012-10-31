@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <boost/asio.hpp>
-#include <meta.hpp>
+#include <meta/meta.hpp>
 
 #include "messages.hpp"
 #include "metaext.hpp"
