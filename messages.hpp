@@ -46,8 +46,8 @@ namespace cobject
         Bool = "System.Bool",           //!< boolean
         Object = "System.Object",       //!< Object
         Void = "System.Void",           //!< void (non-value)
-	ArrayPrefix = "*",		//!< Prefix for array types
-	Hash = "System.Hash",		//!< Hash type
+		ArrayPrefix = "*",				//!< Prefix for array types
+		Hash = "System.Hash",			//!< Hash type
         Unknown = "Unknown";            //!< unknown (erroneous!) type
     }
 

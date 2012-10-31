@@ -31,4 +31,20 @@ namespace cobject
         if (t==typeid(NullType)) return Types::Void;
         return Types::Unknown;
     }
+	
+	bool IsArray(Type_t type)
+	{
+		if(type.length() < Types::ArrayPrefix.length()) return false;
+		for(size_t i=0; i < Types::ArrayPrefix.length(); ++i)
+		{
+			if(type[i] != Types::ArrayPrefix[i]) return false;
+		}
+		return true;
+	}
+	
+	Type_t ArrayElementType(Type_t array)
+	{
+		if(!IsArray(array)) throw runtime_error("Not an array!");
+		return array.substr(Types::ArrayPrefix.length());
+	}
 }

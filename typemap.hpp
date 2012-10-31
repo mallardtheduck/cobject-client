@@ -23,5 +23,19 @@ namespace cobject
     {
         return MapType(typeid(T));
     }
+	
+	/*!
+        Check if type is a CrossObject array
+        \param type    A CrossObject type specifier
+        \return true if the type is an array, false otherwise
+    */
+	bool IsArray(Type_t type);
+	
+	/*!
+        Get the element type for an array
+        \param type    A CrossObject type specifier
+        \return the type of the element of the array
+    */
+	Type_t ArrayElementType(Type_t array);
 }
 #endif // TYPEMAP_HPP_INCLUDED

@@ -7,6 +7,7 @@
 #include <boost/any.hpp>
 
 #include "messages.hpp"
+#include "typemap.hpp"
 
 using namespace std;
 using namespace boost;
