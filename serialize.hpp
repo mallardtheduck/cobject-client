@@ -67,6 +67,8 @@ namespace cobject
         \param v    A TypedVal
     */
     void Serialize(ostream &s, const TypedVal &v);
+	
+	void SerializeArray(ostream &s, const TypedVal &v);
 
     /*!
         Generic serialization function
@@ -124,6 +126,8 @@ namespace cobject
         \param v    TypedVal to deserialize into
     */
     void Deserialize(istream &s, TypedVal &v);
+	
+	void DeserializeArray(istream &s, TypedVal &v);
 
     /*!
         Generic deserialization function

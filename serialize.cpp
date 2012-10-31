@@ -234,6 +234,121 @@ namespace cobject
             Deserialize(s, val);
             v.val=val;
         }
+		else if (IsArray(v.type))
+		{
+			DeserializeArray(s, v);
+		}
+        else if (v.type==Types::Void)
+        {
+            /*Do Nothing*/
+        }
+        else throw runtime_error(string("Invalid type: ") + v.type);
+    }
+	
+	void DeserializeArray(istream &s, TypedVal &v)
+    {
+        Type_t elementType=ArrayElementType(v.type);
+		
+        if (elementType==Types::Int8)
+        {
+            vector<int8_t> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::Int16)
+        {
+            vector<int16_t> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::Int32)
+        {
+            vector<int32_t> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::Int64)
+        {
+            vector<int64_t> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::UInt8)
+        {
+            vector<uint8_t> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::UInt16)
+        {
+            vector<uint16_t> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::UInt32)
+        {
+            vector<uint32_t> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::UInt64)
+        {
+            vector<uint64_t> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::UTF8)
+        {
+            vector<char> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::UTF16)
+        {
+            vector<wchar_t> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::Float32)
+        {
+            vector<float> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::Float64)
+        {
+            vector<double> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::String)
+        {
+            vector<string> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::WString)
+        {
+            vector<wstring> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::Bool)
+        {
+            vector<bool> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+        else if (elementType==Types::Object)
+        {
+            vector<ObjectID_t> val;
+            Deserialize(s, val);
+            v.val=val;
+        }
+		else if (IsArray(v.type))
+		{
+			//FIXME: Array of array!
+		}
         else if (v.type==Types::Void)
         {
             /*Do Nothing*/
