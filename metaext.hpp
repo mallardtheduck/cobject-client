@@ -49,6 +49,13 @@ namespace cobject
         \return A Meta ITypeInfo object
     */
     PolyWrapper<ITypeInfo> TypeToTypeInfo(const Type_t &type);
+    
+    /*!
+        Convert a CrossObject array Type_t to a Meta ITypeInfo object
+        \param type     A CrossObject array Type_t
+        \return A Meta ITypeInfo object
+    */
+    PolyWrapper<ITypeInfo> ArrayTypeToTypeInfo(const Type_t &type);
 
     /*!
         Create an object proxy from an ObjectID

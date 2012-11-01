@@ -88,7 +88,42 @@ namespace cobject
             return TypeID2<bool>();
         if (type==Types::Object)
             return TypeID2<MetaObject>();
+        if(IsArray(type)) return ArrayTypeToTypeInfo(type);
         return TypeID2<NullType>();
+    }
+    
+    PolyWrapper<ITypeInfo> ArrayTypeToTypeInfo(const Type_t &type)
+    {
+    	Type_t elementType=ArrayElementType(type);
+        if (elementType==Types::Int8)
+            return TypeID2<vector<int8_t> >();
+        if (elementType==Types::Int16)
+            return TypeID2<vector<int16_t> >();
+        if (elementType==Types::Int32)
+            return TypeID2<vector<int32_t> >();
+        if (elementType==Types::Int64)
+            return TypeID2<vector<int64_t> >();
+        if (elementType==Types::UInt8)
+            return TypeID2<vector<uint8_t> >();
+        if (elementType==Types::UInt16)
+            return TypeID2<vector<uint16_t> >();
+        if (elementType==Types::UInt32)
+            return TypeID2<vector<uint32_t> >();
+        if (elementType==Types::UInt64)
+            return TypeID2<vector<uint64_t> >();
+        if (elementType==Types::UTF8)
+            return TypeID2<vector<char> >();
+        if (elementType==Types::UTF16)
+            return TypeID2<vector<wchar_t> >();
+        if (elementType==Types::String)
+            return TypeID2<vector<string> >();
+        if (elementType==Types::WString)
+            return TypeID2<vector<wstring> >();
+        if (elementType==Types::Bool)
+            return TypeID2<vector<bool> >();
+        if (elementType==Types::Object)
+            return TypeID2<vector<MetaObject> >();
+        return TypeID2<vector<NullType> >();
     }
 
     MetaObject ObjectIDToMetaObject(Connection &conn, ObjectID_t oid)
