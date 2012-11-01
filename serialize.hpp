@@ -70,20 +70,13 @@ namespace cobject
     */
     void Serialize(ostream &s, const TypedVal &v);
 
-	
-
 	/*!
-
         Serialize an array TypedVal
-
         \param s    Stream to serialize into
-
         \param v    An array TypedVal
-
     */
 
 	void SerializeArray(ostream &s, const TypedVal &v);
-
     /*!
         Generic serialization function
         \param s    Stream to serialize into

@@ -93,7 +93,7 @@ namespace cobject
         else if (v.type==Types::WString) Serialize(s, any_cast<wstring>(v.val));
         else if (v.type==Types::Bool)    Serialize(s, any_cast<bool>(v.val));
         else if (v.type==Types::Object)  Serialize(s, any_cast<ObjectID_t>(v.val));
-
+		else if	(v.type==Types::Hash)	 Serialize(s, any_cast<Hash>(v.val));
 		else if (IsArray(v.type))		 SerializeArray(s, v);
         else if (v.type==Types::Void)    /*Do Nothing*/;
         else throw runtime_error(string("Invalid type: ") + v.type);
