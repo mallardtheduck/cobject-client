@@ -29,6 +29,10 @@ META_METHOD(callhello, string, MParams(MetaObject)){
     return obj["hello"].Call<string>();
 }
 
+META_METHOD(test, NO_RETURN, NO_PARAMS){
+	return Nothing;
+}
+
 MetaClass TestClass(){
     static bool done=false;
     static MetaClass cls("testclass");
@@ -37,6 +41,7 @@ MetaClass TestClass(){
         cls.AddMethod("saytimes", StdFn(saytimes));
         cls.AddMethod("getobject", StdFn(getobject));
         cls.AddMethod("callhello", StdFn(callhello));
+        cls.AddMethod("test", StdFn(test));
         done=true;
     }
     return cls;

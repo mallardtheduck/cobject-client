@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <chrono>
 #include <boost/asio.hpp>
 #include <meta/meta.hpp>
 
@@ -12,6 +13,7 @@
 
 using namespace std;
 using namespace boost;
+using namespace std::chrono;
 
 int main()
 {
@@ -57,6 +59,16 @@ int main()
         cout << "Result of call: '" << hi3 << "'" << endl;
         string hi4=myobject["callhello"].Call<string>(MArgs(myobject2));
         cout << "Result of call: '" << hi4 << "'" << endl;
+        
+       	high_resolution_clock::time_point start=high_resolution_clock::now();
+        for(int i=0; i<1000; ++i){
+        	myobject["test"].Call();
+        }
+        high_resolution_clock::time_point end=high_resolution_clock::now();
+        high_resolution_clock::duration duration=end - start;
+        double ms_ratio=1000.0 * (double)((double)high_resolution_clock::duration::period::num / (double)high_resolution_clock::duration::period::den);
+        double duration_ms=(double)duration.count() * ms_ratio;
+        cout << "Time taken: " << duration_ms << endl;
         while(true) sleep(100);
 
     }
