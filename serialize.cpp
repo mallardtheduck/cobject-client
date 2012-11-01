@@ -20,6 +20,17 @@ namespace cobject
         Serialize(s, len);
         s.write((char*)v.c_str(), len*sizeof(wchar_t));
     }
+    
+    void Serialize(ostream &s, const Hash &v)
+    {
+    	Length_t len=v.size();
+    	Serialize(s, len);
+    	foreach(Q(pair<string, any>) e, v)
+    	{
+    		Serialize(s, e.first);
+    		Serialize(s, 
+    	}
+    }
 
     void Serialize(ostream &s, MethodInfo info)
     {
@@ -38,7 +49,7 @@ namespace cobject
             Serialize(s, info.Methods[i]);
         }
     }
-	
+
 	void SerializeArray(ostream &s, const TypedVal &v)
 	{
 		Type_t elementType=ArrayElementType(v.type);
@@ -82,6 +93,7 @@ namespace cobject
         else if (v.type==Types::WString) Serialize(s, any_cast<wstring>(v.val));
         else if (v.type==Types::Bool)    Serialize(s, any_cast<bool>(v.val));
         else if (v.type==Types::Object)  Serialize(s, any_cast<ObjectID_t>(v.val));
+
 		else if (IsArray(v.type))		 SerializeArray(s, v);
         else if (v.type==Types::Void)    /*Do Nothing*/;
         else throw runtime_error(string("Invalid type: ") + v.type);
@@ -234,7 +246,8 @@ namespace cobject
             Deserialize(s, val);
             v.val=val;
         }
-		else if (IsArray(v.type))
+
+		else if (IsArray(v.type)
 		{
 			DeserializeArray(s, v);
 		}
@@ -244,7 +257,9 @@ namespace cobject
         }
         else throw runtime_error(string("Invalid type: ") + v.type);
     }
+
 	
+
 	void DeserializeArray(istream &s, TypedVal &v)
     {
         Type_t elementType=ArrayElementType(v.type);

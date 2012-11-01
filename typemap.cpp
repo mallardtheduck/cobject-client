@@ -28,10 +28,11 @@ namespace cobject
         if (t==typeid(std::wstring)) return Types::WString;
         if (t==typeid(bool)) return Types::Bool;
         if (t==typeid(meta::MetaObject)) return Types::Object;
+        if (t==typeid(Hash)) return Types::Hash;
         if (t==typeid(NullType)) return Types::Void;
         return MapArrayType(t);
     }
-	
+
 	Type_t MapArrayType(const std::type_info &t)
 	{
 		if (t==typeid(vector<int8_t>)) return Types::ArrayPrefix + Types::Int8;
@@ -50,10 +51,11 @@ namespace cobject
         if (t==typeid(vector<std::wstring>)) return Types::ArrayPrefix + Types::WString;
         if (t==typeid(vector<bool>)) return Types::ArrayPrefix + Types::Bool;
         if (t==typeid(vector<meta::MetaObject>)) return Types::ArrayPrefix + Types::Object;
+    	if (t==typeid(vector<Hash>)) return Types::ArrayPrefix + Types::Hash;
         if (t==typeid(vector<NullType>)) return Types::ArrayPrefix + Types::Void;
 		return Types::ArrayPrefix + Types::Unknown;
 	}
-	
+
 	bool IsArray(Type_t type)
 	{
 		if(type.length() < Types::ArrayPrefix.length()) return false;
@@ -63,7 +65,7 @@ namespace cobject
 		}
 		return true;
 	}
-	
+
 	Type_t ArrayElementType(Type_t array)
 	{
 		if(!IsArray(array)) throw runtime_error("Not an array!");

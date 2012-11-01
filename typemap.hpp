@@ -6,6 +6,7 @@
 
 namespace cobject
 {
+	typedef std::map<string, boost::any> Hash;
 
     /*!
         Convert a C++ type_info value to a CrossObject type
@@ -13,7 +14,9 @@ namespace cobject
         \return The CrossObject type equivelent to the type_info
     */
     Type_t MapType(const type_info &t);
+
 	
+
 	/*!
         Convert a C++ type_info value to a CrossObject array type
         \param t    A C++ type_info value
@@ -30,14 +33,15 @@ namespace cobject
     {
         return MapType(typeid(T));
     }
-	
+
 	/*!
         Check if type is a CrossObject array
         \param type    A CrossObject type specifier
         \return true if the type is an array, false otherwise
     */
+
 	bool IsArray(Type_t type);
-	
+
 	/*!
         Get the element type for an array
         \param type    A CrossObject type specifier
