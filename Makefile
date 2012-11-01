@@ -1,7 +1,7 @@
 CC?=g++
 CFLAGS=-c -Wall -std=gnu++0x
 LDFLAGS=
-LIBS=-lmeta -lboost_system -lboost_thread
+LIBS=-lmeta -lboost_system -lboost_thread -lprofiler
 LIBFLAGS=-shared
 LIBSOURCES=connection.cpp metaext.cpp memstream.cpp runcall.cpp typemap.cpp serialize.cpp
 TSTSOURCES=main.cpp testclass.cpp
