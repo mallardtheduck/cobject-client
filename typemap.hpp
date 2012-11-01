@@ -3,6 +3,8 @@
 
 #include "messages.hpp"
 #include <typeinfo>
+#include <map>
+#include <boost/any.hpp>
 
 namespace cobject
 {
@@ -14,8 +16,6 @@ namespace cobject
         \return The CrossObject type equivelent to the type_info
     */
     Type_t MapType(const type_info &t);
-
-	
 
 	/*!
         Convert a C++ type_info value to a CrossObject array type

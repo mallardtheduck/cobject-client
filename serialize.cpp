@@ -28,7 +28,7 @@ namespace cobject
     	foreach(Q(pair<string, any>) e, v)
     	{
     		Serialize(s, e.first);
-    		Serialize(s, 
+    		Serialize(s, e.second); 
     	}
     }
 
@@ -246,8 +246,7 @@ namespace cobject
             Deserialize(s, val);
             v.val=val;
         }
-
-		else if (IsArray(v.type)
+		else if (IsArray(v.type))
 		{
 			DeserializeArray(s, v);
 		}

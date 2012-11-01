@@ -5,8 +5,10 @@
 #include <vector>
 #include <boost/cstdint.hpp>
 #include <boost/any.hpp>
+#include <meta/util.hpp>
 
 #include "messages.hpp"
+
 #include "typemap.hpp"
 
 using namespace std;
@@ -67,12 +69,19 @@ namespace cobject
         \param v    A TypedVal
     */
     void Serialize(ostream &s, const TypedVal &v);
+
 	
+
 	/*!
+
         Serialize an array TypedVal
+
         \param s    Stream to serialize into
+
         \param v    An array TypedVal
+
     */
+
 	void SerializeArray(ostream &s, const TypedVal &v);
 
     /*!
@@ -131,12 +140,19 @@ namespace cobject
         \param v    TypedVal to deserialize into
     */
     void Deserialize(istream &s, TypedVal &v);
+
 	
+
 	/*!
+
         Deserialize an array TypedVal
+
         \param s    Stream to deserialize from
+
         \param v    TypedVal to deserialize into
+
     */
+
 	void DeserializeArray(istream &s, TypedVal &v);
 
     /*!
