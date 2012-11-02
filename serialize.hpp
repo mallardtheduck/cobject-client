@@ -30,6 +30,13 @@ namespace cobject
             \param v    The value
         */
         TypedVal(Type_t t, any v) : type(t), val(v) {}
+        
+        /*!
+        	Constructor
+            \param v    The value
+        */
+        TypedVal(any v) : type(MapType(v.type())), val(v) {}
+        
         /*!
             Default constructor
         */
@@ -44,18 +51,28 @@ namespace cobject
         \param v    A string
     */
     void Serialize(ostream &s, const string &v);
+    
     /*!
         Serialize a wstring
         \param s    Stream to serialize into
         \param v    A wstring
     */
     void Serialize(ostream &s, const wstring &v);
+    
+    /*!
+        Serialize a Hash
+        \param s    Stream to serialize into
+        \param v    A Hash
+    */
+    void Serialize(ostream &s, const Hash &v);
+    
     /*!
         Serialize MethodInfo
         \param s    Stream to serialize into
         \param v    MethodInfo
     */
     void Serialize(ostream &s, MethodInfo info);
+    
     /*!
         Serialize ClassInfo
         \param s    Stream to serialize into
@@ -63,6 +80,7 @@ namespace cobject
         \param name Serialize the name or not boolean
     */
     void Serialize(ostream &s, ClassInfo info, bool name=true);
+    
     /*!
         Serialize a TypedVal
         \param s    Stream to serialize into
@@ -75,8 +93,8 @@ namespace cobject
         \param s    Stream to serialize into
         \param v    An array TypedVal
     */
-
 	void SerializeArray(ostream &s, const TypedVal &v);
+	
     /*!
         Generic serialization function
         \param s    Stream to serialize into
@@ -108,18 +126,28 @@ namespace cobject
         \param v    string to deserialize into
     */
     void Deserialize(istream &s, string &v);
+    
     /*!
         Deserialize a wstring
         \param s    Stream to deserialize from
         \param v    wstring to deserialize into
     */
     void Deserialize(istream &s, wstring &v);
+    
+     /*!
+        Deserialize a Hash
+        \param s    Stream to deserialize from
+        \param v    Hash to deserialize into
+    */
+    void Deserialize(istream &s, Hash &v);
+    
     /*!
         Deserialize MethodInfo
         \param s    Stream to deserialize from
         \param info MethodInfo to deserialize into
     */
     void Deserialize(istream &s, MethodInfo &info);
+    
     /*!
         Deserialize ClassInfo
         \param s    Stream to deserialize from
@@ -127,6 +155,7 @@ namespace cobject
         \param name Deserialize class name or not boolean
     */
     void Deserialize(istream &s, ClassInfo &info, bool name=true);
+    
     /*!
         Deserialize a TypedVal
         \param s    Stream to deserialize from
@@ -134,18 +163,11 @@ namespace cobject
     */
     void Deserialize(istream &s, TypedVal &v);
 
-	
-
 	/*!
-
         Deserialize an array TypedVal
-
         \param s    Stream to deserialize from
-
         \param v    TypedVal to deserialize into
-
     */
-
 	void DeserializeArray(istream &s, TypedVal &v);
 
     /*!

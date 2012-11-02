@@ -23,12 +23,12 @@ namespace cobject
     
     void Serialize(ostream &s, const Hash &v)
     {
-    	Length_t len=v.size();
-    	Serialize(s, len);
+    	Length_t size=v.size();
+    	Serialize(s, size);
     	foreach(Q(pair<string, any>) e, v)
     	{
     		Serialize(s, e.first);
-    		Serialize(s, e.second); 
+    		Serialize(s, TypedVal(e.second)); 
     	}
     }
 
@@ -123,6 +123,20 @@ namespace cobject
             s.read((char*)&c, sizeof(c));
             v.push_back(c);
         }
+    }
+    
+    void Deserialize(istream &s, Hash &v)
+    {
+    	Length_t size;
+    	Deserialize(s, size);
+    	for(Length_t i=0; i<size; ++i)
+    	{
+    		string key;
+    		Deserialize(s, key);
+    		TypedVal val;
+    		Deserialize(s, val);
+    		v[key]=val;
+    	}
     }
 
     void Deserialize(istream &s, MethodInfo &info)
