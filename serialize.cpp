@@ -69,7 +69,7 @@ namespace cobject
 		else if (elementType==Types::WString) Serialize(s, any_cast<vector<wstring> >(v.val));
 		else if (elementType==Types::Bool)    Serialize(s, any_cast<vector<bool> >(v.val));
 		else if (elementType==Types::Object)  Serialize(s, any_cast<vector<ObjectID_t> >(v.val));
-		else if (IsArray(elementType))		  /*FIXME: Do something useful for arrays-of-arrays...*/;
+		else if (IsArray(elementType))		  THROW_ERROR("Arrays of arrays are not supported.");
 	  	else if (elementType==Types::Void)    /*Do Nothing*/;
 		else THROW_ERROR(string("Invalid type: ") + elementType);
 	}
@@ -390,7 +390,7 @@ namespace cobject
         }
 		else if (IsArray(v.type))
 		{
-			//FIXME: Array of array!
+			THROW_ERROR("Arrays of arrays are not supported.");
 		}
         else if (elementType==Types::Void)
         {
