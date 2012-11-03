@@ -27,7 +27,7 @@ namespace cobject
     	Serialize(s, size);
     	foreach(Q(pair<string, any>) e, v)
     	{
-    		Serialize(s, e.first);
+    		Serialize(s, string(e.first));
     		Serialize(s, TypedVal(e.second)); 
     	}
     }
@@ -54,24 +54,24 @@ namespace cobject
 	{
 		Type_t elementType=ArrayElementType(v.type);
 		if (elementType==Types::Int8)    	  Serialize(s, any_cast<vector<int8_t> >(v.val));
-        else if (elementType==Types::Int16)   Serialize(s, any_cast<vector<int16_t> >(v.val));
-        else if (elementType==Types::Int32)   Serialize(s, any_cast<vector<int32_t> >(v.val));
-        else if (elementType==Types::Int64)   Serialize(s, any_cast<vector<int64_t> >(v.val));
-        else if (elementType==Types::UInt8)   Serialize(s, any_cast<vector<uint8_t> >(v.val));
-        else if (elementType==Types::UInt16)  Serialize(s, any_cast<vector<uint16_t> >(v.val));
-        else if (elementType==Types::UInt32)  Serialize(s, any_cast<vector<uint32_t> >(v.val));
-        else if (elementType==Types::UInt64)  Serialize(s, any_cast<vector<uint64_t> >(v.val));
-        else if (elementType==Types::UTF8)    Serialize(s, any_cast<vector<char> >(v.val));
-        else if (elementType==Types::UTF16)   Serialize(s, any_cast<vector<wchar_t> >(v.val));
-        else if (elementType==Types::Float32) Serialize(s, any_cast<vector<float> >(v.val));
-        else if (elementType==Types::Float64) Serialize(s, any_cast<vector<double> >(v.val));
-        else if (elementType==Types::String)  Serialize(s, any_cast<vector<string> >(v.val));
-        else if (elementType==Types::WString) Serialize(s, any_cast<vector<wstring> >(v.val));
-        else if (elementType==Types::Bool)    Serialize(s, any_cast<vector<bool> >(v.val));
-        else if (elementType==Types::Object)  Serialize(s, any_cast<vector<ObjectID_t> >(v.val));
+		else if (elementType==Types::Int16)   Serialize(s, any_cast<vector<int16_t> >(v.val));
+		else if (elementType==Types::Int32)   Serialize(s, any_cast<vector<int32_t> >(v.val));
+		else if (elementType==Types::Int64)   Serialize(s, any_cast<vector<int64_t> >(v.val));
+		else if (elementType==Types::UInt8)   Serialize(s, any_cast<vector<uint8_t> >(v.val));
+		else if (elementType==Types::UInt16)  Serialize(s, any_cast<vector<uint16_t> >(v.val));
+		else if (elementType==Types::UInt32)  Serialize(s, any_cast<vector<uint32_t> >(v.val));
+		else if (elementType==Types::UInt64)  Serialize(s, any_cast<vector<uint64_t> >(v.val));
+		else if (elementType==Types::UTF8)    Serialize(s, any_cast<vector<char> >(v.val));
+		else if (elementType==Types::UTF16)   Serialize(s, any_cast<vector<wchar_t> >(v.val));
+		else if (elementType==Types::Float32) Serialize(s, any_cast<vector<float> >(v.val));
+		else if (elementType==Types::Float64) Serialize(s, any_cast<vector<double> >(v.val));
+		else if (elementType==Types::String)  Serialize(s, any_cast<vector<string> >(v.val));
+		else if (elementType==Types::WString) Serialize(s, any_cast<vector<wstring> >(v.val));
+		else if (elementType==Types::Bool)    Serialize(s, any_cast<vector<bool> >(v.val));
+		else if (elementType==Types::Object)  Serialize(s, any_cast<vector<ObjectID_t> >(v.val));
 		else if (IsArray(elementType))		  /*FIXME: Do something useful for arrays-of-arrays...*/;
-        else if (elementType==Types::Void)    /*Do Nothing*/;
-        else throw runtime_error(string("Invalid type: ") + elementType);
+	  	else if (elementType==Types::Void)    /*Do Nothing*/;
+		else THROW_ERROR(string("Invalid type: ") + elementType);
 	}
 
     void Serialize(ostream &s, const TypedVal &v)
@@ -96,7 +96,7 @@ namespace cobject
 		else if	(v.type==Types::Hash)	 Serialize(s, any_cast<Hash>(v.val));
 		else if (IsArray(v.type))		 SerializeArray(s, v);
         else if (v.type==Types::Void)    /*Do Nothing*/;
-        else throw runtime_error(string("Invalid type: ") + v.type);
+        else THROW_ERROR(string("Invalid type: ") + v.type);
     }
 
     void Deserialize(istream &s, string &v)
@@ -135,7 +135,7 @@ namespace cobject
     		Deserialize(s, key);
     		TypedVal val;
     		Deserialize(s, val);
-    		v[key]=val;
+    		v[key]=val.val;
     	}
     }
 
@@ -260,6 +260,12 @@ namespace cobject
             Deserialize(s, val);
             v.val=val;
         }
+        else if (v.type==Types::Hash)
+        {
+        	Hash val;
+        	Deserialize(s, val);
+        	v.val=val;
+        }
 		else if (IsArray(v.type))
 		{
 			DeserializeArray(s, v);
@@ -268,7 +274,10 @@ namespace cobject
         {
             /*Do Nothing*/
         }
-        else throw runtime_error(string("Invalid type: ") + v.type);
+        else 
+        {
+        	THROW_ERROR(string("Invalid type: ") + v.type);
+        }
     }
 
 	
@@ -373,14 +382,20 @@ namespace cobject
             Deserialize(s, val);
             v.val=val;
         }
+        else if (elementType==Types::Hash)
+        {
+        	vector<Hash> val;
+        	Deserialize(s, val);
+        	v.val=val;
+        }
 		else if (IsArray(v.type))
 		{
 			//FIXME: Array of array!
 		}
-        else if (v.type==Types::Void)
+        else if (elementType==Types::Void)
         {
             /*Do Nothing*/
         }
-        else throw runtime_error(string("Invalid type: ") + v.type);
+        else THROW_ERROR(string("Invalid type: ") + elementType);
     }
 }

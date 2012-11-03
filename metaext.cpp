@@ -88,6 +88,8 @@ namespace cobject
             return TypeID2<bool>();
         if (type==Types::Object)
             return TypeID2<MetaObject>();
+    	if (type==Types::Hash)
+    		return TypeID2<Hash>();
         if(IsArray(type)) return ArrayTypeToTypeInfo(type);
         return TypeID2<NullType>();
     }
@@ -123,6 +125,8 @@ namespace cobject
             return TypeID2<vector<bool> >();
         if (elementType==Types::Object)
             return TypeID2<vector<MetaObject> >();
+        if (elementType==Types::Hash)
+        	return TypeID2<vector<Hash> >();
         return TypeID2<vector<NullType> >();
     }
 
@@ -232,7 +236,7 @@ namespace cobject
                 return obj;
             }
         }
-        throw std::runtime_error("Call failure");
+        THROW_ERROR("Call failure");
     }
 
     PolyWrapper<ITypeInfo> COFnWrap::GetReturnType()

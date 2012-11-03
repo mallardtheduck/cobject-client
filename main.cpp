@@ -16,6 +16,8 @@ using namespace std;
 using namespace boost;
 using namespace std::chrono;
 
+using cobject::Hash;
+
 int main()
 {
     try
@@ -68,6 +70,14 @@ int main()
         
         vector<int> o=myobject["array_ones"].Call<vector<int> >(5);
         cout << "Size of result of call: " << o.size() << "" << endl;
+        
+        Hash hsh;
+        hsh["a"]=5; hsh["foo"]=string("bar"); hsh["pi"]=3.14159;
+        int c=myobject["hash_count"].Call<int>(hsh);
+        cout << "Result of call: " << c << "" << endl;
+        
+        Hash alpha=myobject["hash_alphabet"].Call<Hash>(15);
+        cout << "Size of result of call: " << alpha.size() << "" << endl;
         
        	high_resolution_clock::time_point start=high_resolution_clock::now();
        	ProfilerStart("/tmp/cobject-client-test-profile");

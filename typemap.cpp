@@ -1,5 +1,7 @@
 #include "typemap.hpp"
 
+#include "throwerror.hpp"
+
 #include <typeinfo>
 #include <boost/cstdint.hpp>
 #include <string>
@@ -53,7 +55,7 @@ namespace cobject
         if (t==typeid(vector<meta::MetaObject>)) return Types::ArrayPrefix + Types::Object;
     	if (t==typeid(vector<Hash>)) return Types::ArrayPrefix + Types::Hash;
         if (t==typeid(vector<NullType>)) return Types::ArrayPrefix + Types::Void;
-		return Types::ArrayPrefix + Types::Unknown;
+		return Types::Unknown;
 	}
 
 	bool IsArray(Type_t type)

@@ -8,7 +8,7 @@
 #include <meta/util.hpp>
 
 #include "messages.hpp"
-
+#include "throwerror.hpp"
 #include "typemap.hpp"
 
 using namespace std;
