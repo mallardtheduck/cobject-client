@@ -61,8 +61,8 @@
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00004"></a>00004 <span class="preprocessor">#include &lt;vector&gt;</span>
 <a name="l00005"></a>00005 <span class="preprocessor">#include &lt;meta/meta.hpp&gt;</span>
-<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="cobject-client_2typemap_8hpp.html">typemap.hpp</a>&quot;</span>
-<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;<a class="code" href="cobject-client_2messages_8hpp.html">messages.hpp</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="typemap_8hpp.html">typemap.hpp</a>&quot;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;<a class="code" href="messages_8hpp.html">messages.hpp</a>&quot;</span>
 <a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="connection_8hpp.html">connection.hpp</a>&quot;</span>
 <a name="l00009"></a>00009 
 <a name="l00010"></a>00010 <span class="keyword">using namespace </span>std;
@@ -80,35 +80,37 @@
 <a name="l00044"></a>00044     MetaClass <a class="code" href="namespacecobject.html#af3132fa605d1ae609c3665133dbfbf78" title="Create a class proxy from a ClassInfo structure.">MakeMetaClass</a>(Connection &amp;conn, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; nsname, ClassInfo info);
 <a name="l00045"></a>00045 
 <a name="l00051"></a>00051     PolyWrapper&lt;ITypeInfo&gt; <a class="code" href="namespacecobject.html#addd9b3a7f037ec54cfbae35bb2efdeec" title="Convert a CrossObject Type_t to a Meta ITypeInfo object.">TypeToTypeInfo</a>(<span class="keyword">const</span> <a class="code" href="namespacecobject.html#ab253a5fa7d35879d0429b9a757c08d92" title="Type for type specifiers in protocol.">Type_t</a> &amp;type);
-<a name="l00052"></a>00052 
-<a name="l00059"></a>00059     MetaObject <a class="code" href="namespacecobject.html#ac8efc85d8b16a2e2d7915b1bb436fa9f" title="Create an object proxy from an ObjectID.">ObjectIDToMetaObject</a>(Connection &amp;conn, <a class="code" href="namespacecobject.html#ac0d00bdf91aaffeffa2fa087ae4da12d" title="Type for ObjectID protocol elements.">ObjectID_t</a> oid);
-<a name="l00060"></a>00060 
-<a name="l00066"></a><a class="code" href="classcobject_1_1_c_o_fn_wrap.html">00066</a>     <span class="keyword">class </span><a class="code" href="classcobject_1_1_c_o_fn_wrap.html" title="A Meta IFnWrap to act as a method proxy This class sends makes a CrossObject protocol method/function...">COFnWrap</a> : <span class="keyword">public</span> IFnWrap
-<a name="l00067"></a>00067     {
-<a name="l00068"></a>00068     <span class="keyword">public</span>:
-<a name="l00076"></a>00076         <a class="code" href="classcobject_1_1_c_o_fn_wrap.html" title="A Meta IFnWrap to act as a method proxy This class sends makes a CrossObject protocol method/function...">COFnWrap</a>(<a class="code" href="classcobject_1_1_connection.html" title="Connection class.">Connection</a> &amp;c, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;nsname, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;clsname, <a class="code" href="structcobject_1_1_method_info.html" title="Method information structure.">MethodInfo</a> &amp;i);
-<a name="l00084"></a>00084         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> TypeCheck(<span class="keyword">const</span> ITypeInfo &amp;retType, <span class="keyword">const</span> ITypeInfo &amp;paramType);
-<a name="l00085"></a>00085 
-<a name="l00092"></a>00092         <span class="keyword">virtual</span> any Call(MetaInfo &amp;info, any args);
-<a name="l00099"></a>00099         <span class="keyword">virtual</span> any Call(MetaInfo &amp;info, many args);
-<a name="l00100"></a>00100 
-<a name="l00105"></a>00105         <span class="keyword">virtual</span> PolyWrapper&lt;ITypeInfo&gt; <a class="code" href="namespacecobject.html#a170f5a38d5c3b843eaff37824fa7ba69" title="Get the return type for a Meta method as a CrossObject Type_t.">GetReturnType</a>();
-<a name="l00110"></a>00110         <span class="keyword">virtual</span> vector&lt;PolyWrapper&lt;ITypeInfo&gt; &gt; <a class="code" href="namespacecobject.html#acc0bed6fb38a6f250575b34fa6a65d5c" title="Get the parameter types for a Meta method as a CrossObject vector&lt;Type_t&gt;">GetParamTypes</a>();
-<a name="l00111"></a>00111 
-<a name="l00112"></a>00112     <span class="keyword">private</span>:
-<a name="l00113"></a>00113         <a class="code" href="classcobject_1_1_connection.html" title="Connection class.">Connection</a> &amp;_conn;
-<a name="l00114"></a>00114         <a class="code" href="structcobject_1_1_method_info.html" title="Method information structure.">MethodInfo</a> _info;
-<a name="l00115"></a>00115         <span class="keywordtype">string</span> _nsname, _classname;
-<a name="l00116"></a>00116         <span class="keyword">static</span> <a class="code" href="namespacecobject.html#ab85a22f5bbc8723da8bb8739df9883c3" title="Type for CallID protocol elements.">CallID_t</a> _callid;
-<a name="l00117"></a>00117     };
+<a name="l00052"></a>00052     
+<a name="l00058"></a>00058     PolyWrapper&lt;ITypeInfo&gt; <a class="code" href="namespacecobject.html#ac64a34dd5692976690ce3fbd09332413" title="Convert a CrossObject array Type_t to a Meta ITypeInfo object.">ArrayTypeToTypeInfo</a>(<span class="keyword">const</span> <a class="code" href="namespacecobject.html#ab253a5fa7d35879d0429b9a757c08d92" title="Type for type specifiers in protocol.">Type_t</a> &amp;type);
+<a name="l00059"></a>00059 
+<a name="l00066"></a>00066     MetaObject <a class="code" href="namespacecobject.html#ac8efc85d8b16a2e2d7915b1bb436fa9f" title="Create an object proxy from an ObjectID.">ObjectIDToMetaObject</a>(Connection &amp;conn, <a class="code" href="namespacecobject.html#ac0d00bdf91aaffeffa2fa087ae4da12d" title="Type for ObjectID protocol elements.">ObjectID_t</a> oid);
+<a name="l00067"></a>00067 
+<a name="l00073"></a><a class="code" href="classcobject_1_1_c_o_fn_wrap.html">00073</a>     <span class="keyword">class </span><a class="code" href="classcobject_1_1_c_o_fn_wrap.html" title="A Meta IFnWrap to act as a method proxy This class sends makes a CrossObject protocol method/function...">COFnWrap</a> : <span class="keyword">public</span> IFnWrap
+<a name="l00074"></a>00074     {
+<a name="l00075"></a>00075     <span class="keyword">public</span>:
+<a name="l00083"></a>00083         <a class="code" href="classcobject_1_1_c_o_fn_wrap.html" title="A Meta IFnWrap to act as a method proxy This class sends makes a CrossObject protocol method/function...">COFnWrap</a>(<a class="code" href="classcobject_1_1_connection.html" title="Connection class.">Connection</a> &amp;c, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;nsname, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;clsname, <a class="code" href="structcobject_1_1_method_info.html" title="Method information structure.">MethodInfo</a> &amp;i);
+<a name="l00091"></a>00091         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> TypeCheck(<span class="keyword">const</span> ITypeInfo &amp;retType, <span class="keyword">const</span> ITypeInfo &amp;paramType);
+<a name="l00092"></a>00092 
+<a name="l00099"></a>00099         <span class="keyword">virtual</span> any Call(MetaInfo &amp;info, any args);
+<a name="l00106"></a>00106         <span class="keyword">virtual</span> any Call(MetaInfo &amp;info, many args);
+<a name="l00107"></a>00107 
+<a name="l00112"></a>00112         <span class="keyword">virtual</span> PolyWrapper&lt;ITypeInfo&gt; <a class="code" href="namespacecobject.html#a170f5a38d5c3b843eaff37824fa7ba69" title="Get the return type for a Meta method as a CrossObject Type_t.">GetReturnType</a>();
+<a name="l00117"></a>00117         <span class="keyword">virtual</span> vector&lt;PolyWrapper&lt;ITypeInfo&gt; &gt; <a class="code" href="namespacecobject.html#acc0bed6fb38a6f250575b34fa6a65d5c" title="Get the parameter types for a Meta method as a CrossObject vector&lt;Type_t&gt;">GetParamTypes</a>();
 <a name="l00118"></a>00118 
-<a name="l00119"></a>00119 }
-<a name="l00120"></a>00120 <span class="preprocessor">#endif // METAEXT_HPP_INCLUDED</span>
+<a name="l00119"></a>00119     <span class="keyword">private</span>:
+<a name="l00120"></a>00120         <a class="code" href="classcobject_1_1_connection.html" title="Connection class.">Connection</a> &amp;_conn;
+<a name="l00121"></a>00121         <a class="code" href="structcobject_1_1_method_info.html" title="Method information structure.">MethodInfo</a> _info;
+<a name="l00122"></a>00122         <span class="keywordtype">string</span> _nsname, _classname;
+<a name="l00123"></a>00123         <span class="keyword">static</span> <a class="code" href="namespacecobject.html#ab85a22f5bbc8723da8bb8739df9883c3" title="Type for CallID protocol elements.">CallID_t</a> _callid;
+<a name="l00124"></a>00124     };
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 }
+<a name="l00127"></a>00127 <span class="preprocessor">#endif // METAEXT_HPP_INCLUDED</span>
 </pre></div></div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 31 2012 21:39:18 for CrossObject Client Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 3 2012 18:49:04 for CrossObject Client Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -69,7 +69,7 @@
 <p>Class holding an any and type information.  
  <a href="classcobject_1_1_typed_val.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="cobject-client_2serialize_8hpp_source.html">serialize.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="serialize_8hpp_source.html">serialize.hpp</a>&gt;</code></p>
 
 <p><a href="classcobject_1_1_typed_val-members.html">List of all members.</a></p>
 <table class="memberdecls">
@@ -77,10 +77,8 @@
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcobject_1_1_typed_val.html#a826077237a644f926dfa91418a46ef47">TypedVal</a> (<a class="el" href="namespacecobject.html#ab253a5fa7d35879d0429b9a757c08d92">Type_t</a> t, any v)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a826077237a644f926dfa91418a46ef47"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcobject_1_1_typed_val.html#a88ea5a941a0b9c370e4ad075931b81c5">TypedVal</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#a88ea5a941a0b9c370e4ad075931b81c5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcobject_1_1_typed_val.html#a826077237a644f926dfa91418a46ef47">TypedVal</a> (<a class="el" href="namespacecobject.html#ab253a5fa7d35879d0429b9a757c08d92">Type_t</a> t, any v)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a826077237a644f926dfa91418a46ef47"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcobject_1_1_typed_val.html#ae537787689149524b00fe95151ee2343">TypedVal</a> (any v)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ae537787689149524b00fe95151ee2343"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcobject_1_1_typed_val.html#a88ea5a941a0b9c370e4ad075931b81c5">TypedVal</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#a88ea5a941a0b9c370e4ad075931b81c5"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
@@ -130,44 +128,16 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a88ea5a941a0b9c370e4ad075931b81c5"></a><!-- doxytag: member="cobject::TypedVal::TypedVal" ref="a88ea5a941a0b9c370e4ad075931b81c5" args="()" -->
+<a class="anchor" id="ae537787689149524b00fe95151ee2343"></a><!-- doxytag: member="cobject::TypedVal::TypedVal" ref="ae537787689149524b00fe95151ee2343" args="(any v)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classcobject_1_1_typed_val.html#a826077237a644f926dfa91418a46ef47">cobject::TypedVal::TypedVal</a> </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Default constructor. </p>
-
-</div>
-</div>
-<a class="anchor" id="a826077237a644f926dfa91418a46ef47"></a><!-- doxytag: member="cobject::TypedVal::TypedVal" ref="a826077237a644f926dfa91418a46ef47" args="(Type_t t, any v)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classcobject_1_1_typed_val.html#a826077237a644f926dfa91418a46ef47">cobject::TypedVal::TypedVal</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacecobject.html#ab253a5fa7d35879d0429b9a757c08d92">Type_t</a>&#160;</td>
-          <td class="paramname"><em>t</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">any&#160;</td>
-          <td class="paramname"><em>v</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -176,7 +146,6 @@ Public Attributes</h2></td></tr>
 <p>Constructor. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>The type </td></tr>
     <tr><td class="paramname">v</td><td>The value </td></tr>
   </table>
   </dd>
@@ -233,15 +202,14 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/mallard/Projects/cobject-client/<a class="el" href="cobject-client_2serialize_8hpp_source.html">serialize.hpp</a></li>
-<li>/home/mallard/Projects/cobject-shared/<a class="el" href="cobject-shared_2serialize_8hpp_source.html">serialize.hpp</a></li>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/home/mallard/Projects/cobject-client/<a class="el" href="serialize_8hpp_source.html">serialize.hpp</a></li>
 </ul>
 </div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 31 2012 21:39:18 for CrossObject Client Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 3 2012 18:49:04 for CrossObject Client Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

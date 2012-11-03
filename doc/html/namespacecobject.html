@@ -108,6 +108,8 @@ Typedefs</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for lengths in protocol.  <a href="#a6d2fa46cf5b9c5e7d74d772fe62d7418"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#ab253a5fa7d35879d0429b9a757c08d92">Type_t</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for type specifiers in protocol.  <a href="#ab253a5fa7d35879d0429b9a757c08d92"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; string, <br class="typebreak"/>
+boost::any &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#afda8b1f7dadb1cbf174e8542ef1fff79">Hash</a></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcobject_1_1_broker_details.html">BrokerDetails</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#ad429ddc0a5be1bfee12f7234e8b8fecc">GetBrokerDetails</a> (tcp::iostream &amp;s)</td></tr>
@@ -124,6 +126,8 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a class proxy from a <a class="el" href="structcobject_1_1_class_info.html" title="Class information structure.">ClassInfo</a> structure.  <a href="#af3132fa605d1ae609c3665133dbfbf78"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">PolyWrapper&lt; ITypeInfo &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#addd9b3a7f037ec54cfbae35bb2efdeec">TypeToTypeInfo</a> (const <a class="el" href="namespacecobject.html#ab253a5fa7d35879d0429b9a757c08d92">Type_t</a> &amp;type)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a CrossObject Type_t to a Meta ITypeInfo object.  <a href="#addd9b3a7f037ec54cfbae35bb2efdeec"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">PolyWrapper&lt; ITypeInfo &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#ac64a34dd5692976690ce3fbd09332413">ArrayTypeToTypeInfo</a> (const <a class="el" href="namespacecobject.html#ab253a5fa7d35879d0429b9a757c08d92">Type_t</a> &amp;type)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a CrossObject array Type_t to a Meta ITypeInfo object.  <a href="#ac64a34dd5692976690ce3fbd09332413"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">MetaObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#ac8efc85d8b16a2e2d7915b1bb436fa9f">ObjectIDToMetaObject</a> (<a class="el" href="classcobject_1_1_connection.html">Connection</a> &amp;conn, <a class="el" href="namespacecobject.html#ac0d00bdf91aaffeffa2fa087ae4da12d">ObjectID_t</a> oid)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an object proxy from an ObjectID.  <a href="#ac8efc85d8b16a2e2d7915b1bb436fa9f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">vector&lt; any &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#a6dff3b46f91e58dbf8ea3c4f3dbb4cff">VectorTVtoVectorAny</a> (vector&lt; <a class="el" href="classcobject_1_1_typed_val.html">TypedVal</a> &gt; vtv)</td></tr>
@@ -141,6 +145,8 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a string.  <a href="#a7e56e031af33c3c753ad37db9a4dc83d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#a631f7b24501921ec5d9eabfef421b69f">Serialize</a> (ostream &amp;s, const wstring &amp;v)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a wstring.  <a href="#a631f7b24501921ec5d9eabfef421b69f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#ad08c0ccd6f97bc18de2eef762c44798b">Serialize</a> (ostream &amp;s, const <a class="el" href="namespacecobject.html#afda8b1f7dadb1cbf174e8542ef1fff79">Hash</a> &amp;v)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a Hash.  <a href="#ad08c0ccd6f97bc18de2eef762c44798b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#ab73e3f49ad3c71bb85e93369057e07cb">Serialize</a> (ostream &amp;s, <a class="el" href="structcobject_1_1_method_info.html">MethodInfo</a> info)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize <a class="el" href="structcobject_1_1_method_info.html" title="Method information structure.">MethodInfo</a>.  <a href="#ab73e3f49ad3c71bb85e93369057e07cb"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#a98dbaa97e3c346d02d7f925006bc0e89">Serialize</a> (ostream &amp;s, <a class="el" href="structcobject_1_1_class_info.html">ClassInfo</a> info, bool name=true)</td></tr>
@@ -153,6 +159,8 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize a string.  <a href="#ae680fa6b5e1d342411ccea52219aace6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#ab7c0a2d163d352c39e2dfb2f25475165">Deserialize</a> (istream &amp;s, wstring &amp;v)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize a wstring.  <a href="#ab7c0a2d163d352c39e2dfb2f25475165"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#ad1e50d85966f42ace04709ae4ae33936">Deserialize</a> (istream &amp;s, <a class="el" href="namespacecobject.html#afda8b1f7dadb1cbf174e8542ef1fff79">Hash</a> &amp;v)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize a Hash.  <a href="#ad1e50d85966f42ace04709ae4ae33936"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#a52ac3d07f2d43cc8298fe2fa09ca61ea">Deserialize</a> (istream &amp;s, <a class="el" href="structcobject_1_1_method_info.html">MethodInfo</a> &amp;info)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize <a class="el" href="structcobject_1_1_method_info.html" title="Method information structure.">MethodInfo</a>.  <a href="#a52ac3d07f2d43cc8298fe2fa09ca61ea"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecobject.html#aea632f0a588a73afc3b97c00517b071d">Deserialize</a> (istream &amp;s, <a class="el" href="structcobject_1_1_class_info.html">ClassInfo</a> &amp;info, bool name=true)</td></tr>
@@ -199,6 +207,19 @@ Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Type for CallID protocol elements. </p>
+
+</div>
+</div>
+<a class="anchor" id="afda8b1f7dadb1cbf174e8542ef1fff79"></a><!-- doxytag: member="cobject::Hash" ref="afda8b1f7dadb1cbf174e8542ef1fff79" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::map&lt;string, boost::any&gt; <a class="el" href="namespacecobject.html#afda8b1f7dadb1cbf174e8542ef1fff79">cobject::Hash</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
 
 </div>
 </div>
@@ -319,6 +340,32 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ac64a34dd5692976690ce3fbd09332413"></a><!-- doxytag: member="cobject::ArrayTypeToTypeInfo" ref="ac64a34dd5692976690ce3fbd09332413" args="(const Type_t &amp;type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PolyWrapper&lt; ITypeInfo &gt; <a class="el" href="namespacecobject.html#ac64a34dd5692976690ce3fbd09332413">cobject::ArrayTypeToTypeInfo</a> </td>
+          <td>(</td>
+          <td class="paramtype">const Type_t &amp;&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Convert a CrossObject array Type_t to a Meta ITypeInfo object. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>A CrossObject array Type_t </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>A Meta ITypeInfo object </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ae680fa6b5e1d342411ccea52219aace6"></a><!-- doxytag: member="cobject::Deserialize" ref="ae680fa6b5e1d342411ccea52219aace6" args="(istream &amp;s, string &amp;v)" -->
 <div class="memitem">
 <div class="memproto">
@@ -385,6 +432,42 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">s</td><td>Stream to deserialize from </td></tr>
     <tr><td class="paramname">v</td><td>wstring to deserialize into </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad1e50d85966f42ace04709ae4ae33936"></a><!-- doxytag: member="cobject::Deserialize" ref="ad1e50d85966f42ace04709ae4ae33936" args="(istream &amp;s, Hash &amp;v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="namespacecobject.html#ae680fa6b5e1d342411ccea52219aace6">cobject::Deserialize</a> </td>
+          <td>(</td>
+          <td class="paramtype">istream &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="testclass_8cpp.html#a174744c47690229a9fe0f4e55e8414b8">Hash</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Deserialize a Hash. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Stream to deserialize from </td></tr>
+    <tr><td class="paramname">v</td><td>Hash to deserialize into </td></tr>
   </table>
   </dd>
 </dl>
@@ -1358,6 +1441,42 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="ad08c0ccd6f97bc18de2eef762c44798b"></a><!-- doxytag: member="cobject::Serialize" ref="ad08c0ccd6f97bc18de2eef762c44798b" args="(ostream &amp;s, const Hash &amp;v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="namespacecobject.html#a7e56e031af33c3c753ad37db9a4dc83d">cobject::Serialize</a> </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="testclass_8cpp.html#a174744c47690229a9fe0f4e55e8414b8">Hash</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Serialize a Hash. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Stream to serialize into </td></tr>
+    <tr><td class="paramname">v</td><td>A Hash </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ab73e3f49ad3c71bb85e93369057e07cb"></a><!-- doxytag: member="cobject::Serialize" ref="ab73e3f49ad3c71bb85e93369057e07cb" args="(ostream &amp;s, MethodInfo info)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1659,7 +1778,7 @@ template&lt;typename T &gt; </div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 31 2012 21:39:18 for CrossObject Client Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 3 2012 18:49:04 for CrossObject Client Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
