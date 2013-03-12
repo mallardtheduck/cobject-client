@@ -1,5 +1,5 @@
 CC?=g++
-CFLAGS=-c -Wall -std=gnu++0x -fPIC
+CFLAGS=-c -Wall -std=gnu++0x -fPIC -g
 LDFLAGS=
 LIBS=-lmeta -lboost_system -lboost_thread -lprofiler
 LIBFLAGS=-shared
