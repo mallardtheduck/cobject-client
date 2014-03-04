@@ -4,7 +4,7 @@
 #include <chrono>
 #include <boost/asio.hpp>
 #include <meta/meta.hpp>
-#include <google/profiler.h>
+//#include <google/profiler.h>
 
 //#include "serialize.hpp"
 #include "foreach.hpp"
@@ -80,11 +80,11 @@ int main()
         cout << "Size of result of call: " << alpha.size() << "" << endl;
         
        	high_resolution_clock::time_point start=high_resolution_clock::now();
-       	ProfilerStart("/tmp/cobject-client-test-profile");
+//       	ProfilerStart("/tmp/cobject-client-test-profile");
         for(int i=0; i<1000; ++i){
         	myobject["test"].Call();
         }
-        ProfilerStop();
+//        ProfilerStop();
         high_resolution_clock::time_point end=high_resolution_clock::now();
         high_resolution_clock::duration duration=end - start;
         double ms_ratio=1000.0 * (double)((double)high_resolution_clock::duration::period::num / (double)high_resolution_clock::duration::period::den);
