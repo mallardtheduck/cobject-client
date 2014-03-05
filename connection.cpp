@@ -14,10 +14,14 @@ namespace cobject
     Connection::Connection(const string &host, const string &port) :
             _term(new bool(false)),
             _sendready(false),
-            _s(host, port),
+            _sconnect(host, port),
+            _socket(_io_service, ip::tcp::v4(), _sconnect.rdbuf()->native_handle()),
+            _sin(_socket),
+	    _sout(_socket),
             _sendthread(bind(&Connection::Sender,this)),
             _recvthread(bind(&Connection::Reciever,this))
-    {}
+    {
+    }
 
     Connection::~Connection()
     {
@@ -30,16 +34,17 @@ namespace cobject
     void Connection::Sender()
     {
         boost::shared_ptr<bool> term=_term;
-        _s.rdbuf()->pubsetbuf(0, 0);
+        _sout.rdbuf()->pubsetbuf(0, 0);
         while (!_sendready);
         while (!*term)
         {
             unique_lock<mutex> lock(_sqmut);
             while (_sendqueue.empty() && !*term) _sendcond.wait(lock);
             string &str=_sendqueue.front();
-            //cout << "Sending..." << endl;
-            _s.write(str.c_str(), str.length());
-            _s.flush();
+            cout << "Sending " << str.length() << " bytes..." << endl;
+            _sout.write(str.c_str(), str.length());
+            _sout.flush();
+	    //std::cout << "Error: " << _sout.error().message() << std::endl;
             _sendqueue.pop();
         }
     }
@@ -48,63 +53,63 @@ namespace cobject
     {
         boost::shared_ptr<bool> term=_term;
         string welcome;
-        Deserialize(_s, welcome);
+        Deserialize(_sin, welcome);
         cout << welcome << endl;
         _sendready=true;
         while (!*term)
         {
             MessageID_t msgid;
-            Deserialize(_s, msgid);
-            //cout << "Recieved MessageID " << msgid << " from broker." << endl;
+            Deserialize(_sin, msgid);
+            cout << "Recieved MessageID " << msgid << " from broker." << endl;
             switch (msgid)
             {
             case Messages::BrokerDetails:
-                Recv_BrokerVersion(_s);
+                Recv_BrokerVersion(_sin);
                 break;
             case Messages::SetNamespace:
-                Recv_SetNamespace(_s);
+                Recv_SetNamespace(_sin);
                 break;
             case Messages::ListNamespaces:
-                Recv_ListNamespaces(_s);
+                Recv_ListNamespaces(_sin);
                 break;
             case Messages::ListClasses:
-                Recv_ListClasses(_s);
+                Recv_ListClasses(_sin);
                 break;
             case Messages::RegisterClass:
-                Recv_RegisterClass(_s);
+                Recv_RegisterClass(_sin);
                 break;
             case Messages::GetClassDef:
-                Recv_GetClassDef(_s);
+                Recv_GetClassDef(_sin);
                 break;
             case Messages::GetObjectDef:
-                Recv_GetObjectDef(_s);
+                Recv_GetObjectDef(_sin);
                 break;
             case Messages::RegisterObject:
-                Recv_RegisterObject(_s);
+                Recv_RegisterObject(_sin);
                 break;
             case Messages::ConstructObject:
-                Recv_ConstructObject(_s);
+                Recv_ConstructObject(_sin);
                 break;
             case Messages::CallStatic:
-                Recv_CallStatic(_s);
+                Recv_CallStatic(_sin);
                 break;
             case Messages::CallMethod:
-                Recv_CallMethod(_s);
+                Recv_CallMethod(_sin);
                 break;
             case Messages::ReleaseObject:
-                Recv_ReleaseObject(_s);
+                Recv_ReleaseObject(_sin);
                 break;
             case Messages::Construct:
-                Recv_ReqConstruct(_s);
+                Recv_ReqConstruct(_sin);
                 break;
             case Messages::StaticCall:
-                Recv_ReqStaticCall(_s);
+                Recv_ReqStaticCall(_sin);
                 break;
             case Messages::MethodCall:
-                Recv_ReqMethodCall(_s);
+                Recv_ReqMethodCall(_sin);
                 break;
             case Messages::FreeObject:
-                Recv_FreeObject(_s);
+                Recv_FreeObject(_sin);
                 break;
             }
         }

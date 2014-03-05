@@ -5,7 +5,7 @@ LIBS=-lmeta -lboost_system -lboost_thread
 TSTLIBS=-lstdc++ -lpthread
 #-lprofiler
 LIBFLAGS=-shared
-LIBSOURCES=connection.cpp metaext.cpp memstream.cpp runcall.cpp typemap.cpp serialize.cpp
+LIBSOURCES=connection.cpp metaext.cpp memstream.cpp runcall.cpp typemap.cpp serialize.cpp socketstream.cpp
 TSTSOURCES=main.cpp testclass.cpp
 LIBOBJECTS=$(LIBSOURCES:.cpp=.o)
 TSTOBJECTS=$(TSTSOURCES:.cpp=.o)

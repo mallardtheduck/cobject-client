@@ -14,6 +14,7 @@
 #include "handlemessage.hpp"
 #include "future.hpp"
 #include "metaext.hpp"
+#include "socketstream.hpp"
 
 using namespace boost;
 using namespace boost;
@@ -39,7 +40,10 @@ namespace cobject
     private:
         boost::shared_ptr<bool> _term;
         volatile bool _sendready;
-        tcp::iostream _s;
+	io_service _io_service;
+        tcp::iostream _sconnect;
+	tcp::socket _socket;
+	socketstream _sin, _sout;
         queue<string> _sendqueue;
         condition_variable _sendcond;
         mutex _sqmut;
