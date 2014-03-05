@@ -5,6 +5,7 @@
 #include "foreach.hpp"
 #include "serialize.hpp"
 #include "runcall.hpp"
+#include "debug.hpp"
 
 using namespace std;
 
@@ -41,7 +42,7 @@ namespace cobject
             unique_lock<mutex> lock(_sqmut);
             while (_sendqueue.empty() && !*term) _sendcond.wait(lock);
             string &str=_sendqueue.front();
-            cout << "Sending " << str.length() << " bytes..." << endl;
+            DEBUG(cout << "Sending " << str.length() << " bytes..." << endl);
             _sout.write(str.c_str(), str.length());
             _sout.flush();
 	    //std::cout << "Error: " << _sout.error().message() << std::endl;
@@ -54,13 +55,13 @@ namespace cobject
         boost::shared_ptr<bool> term=_term;
         string welcome;
         Deserialize(_sin, welcome);
-        cout << welcome << endl;
+        DEBUG(cout << welcome << endl);
         _sendready=true;
         while (!*term)
         {
             MessageID_t msgid;
             Deserialize(_sin, msgid);
-            cout << "Recieved MessageID " << msgid << " from broker." << endl;
+            DEBUG(cout << "Recieved MessageID " << msgid << " from broker." << endl);
             switch (msgid)
             {
             case Messages::BrokerDetails:

@@ -1,6 +1,7 @@
 CC?=g++
 CFLAGS=-c -Wall -std=gnu++0x -fPIC -g
 LDFLAGS=
+NDEBUG?=
 LIBS=-lmeta -lboost_system -lboost_thread 
 TSTLIBS=-lstdc++ -lpthread
 #-lprofiler
@@ -21,7 +22,7 @@ $(LIB): $(LIBOBJECTS)
 	$(CC) $(LDFLAGS) $(LIBFLAGS) -o $@ $(LIBOBJECTS) $(LIBS)
 
 .cpp.o:
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(NDEBUG) $(CFLAGS) $< -o $@
 	
 tests: $(LIBSOURCES) $(TSTSOURCES) $(TST)
 	
